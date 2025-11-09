@@ -6,6 +6,8 @@ import AddCars from "../Pages/AddCars/AddCars";
 import MyListings from "../Pages/MyListings/MyListings";
 import MyBookings from "../Pages/MyBookings/MyBookings";
 import BrowseCars from "../Pages/BrowseCars/BrowseCars";
+import Login from "../Pages/LoginAndSignup/Login";
+import SignUp from "../Pages/LoginAndSignup/SignUp";
 // lazy loading
 const MainLayouts=lazy(()=>import("../Layouts/MainLayouts"))
 const Error =lazy(()=>import("../Pages/Error/Error"))
@@ -38,8 +40,18 @@ export const router = createBrowserRouter([
             {
                 path:'/browse-cars',
                 Component:BrowseCars
+            },
+            {
+                path:'/login',
+                Component:Login
+            },
+            {
+                path:'/signUp',
+                Component:SignUp
             }
         ]
-    }
+
+    },
+    
 ])
 

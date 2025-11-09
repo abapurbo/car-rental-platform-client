@@ -25,9 +25,10 @@ export default function HeroBanner() {
         className="mySwiper"
       >
         <SwiperSlide>
-            <div className="banner w-full p-10 h-full">
+            <div className='w-full h-full bg-linear-to-r from-black/25 to-transparent  '>
+              <div className="banner container mx-auto w-full p-10 h-full">
 
-              <div className="mt-10 flex flex-col  w-fit">
+              <div className="w-full mt-10 flex flex-col  ">
                 <div>
                   <h1 className="text-black  font-extrabold text-5xl text-start leading-tight">
                     <span>Looking To Save More</span><br />
@@ -63,8 +64,13 @@ export default function HeroBanner() {
                 </div>
               </div>
             </div>
+            </div>
         </SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide>
+          <div>
+            
+          </div>
+        </SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
         <SwiperSlide>Slide 4</SwiperSlide>
         <SwiperSlide>Slide 5</SwiperSlide>
