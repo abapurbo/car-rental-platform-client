@@ -6,7 +6,7 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center  px-4">
       
       {/* Card */}
-      <div className="bg-black/60 backdrop-blur-2xl border rounded-xl border-white/20 shadow-2xl p-10  w-full max-w-md">
+      <div className="bg-black/30 backdrop-blur-2xl border rounded-xl border-white/20 shadow-2xl p-10  w-full max-w-md">
         
         {/* Logo */}
         <h1 className="text-center text-4xl font-extrabold text-white tracking-wide">
