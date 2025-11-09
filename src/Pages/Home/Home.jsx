@@ -3,7 +3,7 @@ import HeroBanner from "./HeroBanner";
 
 export default function Home() {
   return (
-    <div>
+    <div className="h-[2000px]">
      <HeroBanner></HeroBanner>
     </div>
   )

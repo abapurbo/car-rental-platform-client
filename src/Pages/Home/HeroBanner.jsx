@@ -25,47 +25,44 @@ export default function HeroBanner() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className="bg-white backdrop-blur-md bg-[url('https://i.ibb.co.com/200N4sBL/bmw-m8-competition-individual-rosso-corsa-stage-teaser-02-removebg-preview-1.png')] 
-  bg-size-[1050px_auto] bg-no-repeat bg-position-[left_420px_bottom_50px] 
-  w-full p-10 h-full">
+            <div className="banner w-full p-10 h-full">
 
-            <div className="mt-10 flex flex-col  w-fit">
-              <div>
-                <h1 className="text-black  font-extrabold text-5xl text-start leading-tight">
-                  <span>Looking To Save More</span><br />
-                  On Your <span className="bg-red-600 text-white transform -skew-x-12 inline-block px-2">Rental Car?</span>
-                </h1>
-                <p className="text-xl italic text-start text-gray-800 mt-6">
-                  We Provide The Best Car Options And Expert Services For<br />
-                  The Greatest Customer Experience
-                </p>
-              </div>
-              <div className='flex flex-col mt-10 items-start'>
-                <h1 className='text-[15px] text-black font-semibold'>BMW M8 Competition</h1>
-                <p className='text-2xl font-bold text-red-600'>$1178.90<small className='text-gray-500 font-semibold'>/day</small></p>
-                <div className='flex justify-around items-center border-t-2 mt-3 border-l-2 border-r-2 rounded-full border-gray-400 w-70 h-13'>
-                   <p className='text-black flex flex-col items-center'>
-                   <IoMdSpeedometer  className='text-red-600'/>
-                     <span className='text-xs font-semibold text-gray-500'>4,000</span>
-                   </p>
-                   <p className='text-black flex flex-col items-center'>
-                  <TbManualGearbox className='text-red-600'/>
-                     <span className='text-xs font-semibold text-gray-500'>Auto</span>
-                   </p>
-                   <p className='text-black flex flex-col items-center'>
-                    <FaUserFriends className='text-red-600'/>
-                     <span className='text-xs font-semibold text-gray-500'>Person</span>
-                   </p>
-                   <p className='text-black flex flex-col items-center'>
-                    <GiGasPump className='text-red-600'/>
-                     <span className='text-xs font-semibold text-gray-500'>Petrol</span>
-                   </p>
+              <div className="mt-10 flex flex-col  w-fit">
+                <div>
+                  <h1 className="text-black  font-extrabold text-5xl text-start leading-tight">
+                    <span>Looking To Save More</span><br />
+                    On Your <span className="bg-red-600 text-white transform -skew-x-12 inline-block px-2">Rental Car?</span>
+                  </h1>
+                  <p className="text-xl italic text-start text-gray-800 mt-6">
+                    We Provide The Best Car Options And Expert Services For<br />
+                    The Greatest Customer Experience
+                  </p>
                 </div>
-                <button className='btn bg-red-600 mt-5 text-white w-70 rounded-full'>Booking Now</button>
+                <div className='flex flex-col mt-10 items-start'>
+                  <h1 className='text-[15px] text-black font-semibold'>BMW M8 Competition</h1>
+                  <p className='text-2xl font-bold text-red-600'>$1178.90<small className='text-gray-800 font-semibold'>/day</small></p>
+                  <div className='flex justify-around items-center border-t-2 mt-3 border-l-2 border-r-2 rounded-full border-gray-400 w-70 h-13'>
+                    <p className='text-black flex flex-col items-center'>
+                      <IoMdSpeedometer className='text-red-600' />
+                      <span className='text-xs font-semibold text-gray-800'>4,000</span>
+                    </p>
+                    <p className='text-black flex flex-col items-center'>
+                      <TbManualGearbox className='text-red-600' />
+                      <span className='text-xs font-semibold text-gray-800'>Auto</span>
+                    </p>
+                    <p className='text-black flex flex-col items-center'>
+                      <FaUserFriends className='text-red-600' />
+                      <span className='text-xs font-semibold text-gray-800'>Person</span>
+                    </p>
+                    <p className='text-black flex flex-col items-center'>
+                      <GiGasPump className='text-red-600' />
+                      <span className='text-xs font-semibold text-gray-800'>Petrol</span>
+                    </p>
+                  </div>
+                  <button className='btn bg-red-600 mt-5 text-white w-70 rounded-full'>Booking Now</button>
+                </div>
               </div>
             </div>
-          </div>
-
         </SwiperSlide>
         <SwiperSlide>Slide 2</SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
