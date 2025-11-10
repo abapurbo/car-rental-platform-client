@@ -17,8 +17,8 @@ import DescriptionIcon from "@mui/icons-material/Description";
 
 export default function AddCar() {
   return (
-    <div className="min-h-screen  pt-32 pb-18 flex justify-center items-center p-6 bg-gradient-to-r from-gray-300 to-white">
-      <div className="w-full max-w-4xl p-8 rounded-2xl bg-black/30 backdrop-blur-lg border border-white/20 shadow-xl">
+    <div className="min-h-screen  pt-32 pb-18 flex justify-center items-center p-6  ">
+      <div className="w-full max-w-4xl p-8 rounded-[5px] bg-black/30 backdrop-blur-lg border border-white/20 shadow-xl">
         <Typography
           variant="h4"
           textAlign="center"
@@ -45,19 +45,16 @@ export default function AddCar() {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <DirectionsCarIcon style={{ color: "white" }} />
+                    <DirectionsCarIcon style={{ color: "red" }} />
                   </InputAdornment>
                 ),
               }}
               variant="outlined"
-              sx={{
-                input: { color: "white" },
-                label: { color: "white" },
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": { borderColor: "white" },
-                },
-                "& .MuiSelect-icon": { color: "white" },
-                "& .MuiMenuItem-root": { color: "black" },
+                sx={{
+                "& .MuiOutlinedInput-input": { color: "black" }, 
+                "& .MuiInputLabel-root": { color: "black" },     
+                "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
+                "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
             />
 
@@ -66,22 +63,20 @@ export default function AddCar() {
               select
               name="category"
               label="Category"
+             defaultValue="Sedan"
               fullWidth
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <CategoryIcon style={{ color: "white" }} />
+                    <CategoryIcon style={{ color: "red" }} />
                   </InputAdornment>
                 ),
               }}
               sx={{
-                input: { color: "white" },
-                label: { color: "white" },
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": { borderColor: "white" },
-                },
-                "& .MuiSelect-icon": { color: "white" },
-                "& .MuiMenuItem-root": { color: "black" },
+                "& .MuiOutlinedInput-input": { color: "black" },
+                "& .MuiInputLabel-root": { color: "black" },
+                "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
+                "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
             >
               <MenuItem value="Sedan">Sedan</MenuItem>
@@ -103,19 +98,19 @@ export default function AddCar() {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <DescriptionIcon style={{ color: "#ff6b6b" }} />
+                    <DescriptionIcon style={{ color: "red" }} />
                   </InputAdornment>
                 ),
               }}
               sx={{
-                input: { color: "white" },
-                label: { color: "white" },
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": { borderColor: "white" },
-                },
+                "& .MuiOutlinedInput-input": { color: "black" }, 
+                "& .MuiInputLabel-root": { color: "black" },   
+                "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
+                "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
               className="col-span-1 md:col-span-2"
             />
+
 
             {/* Rent Price */}
             <TextField
@@ -127,14 +122,15 @@ export default function AddCar() {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <PaidIcon style={{ color: "white" }} />
+                    <PaidIcon style={{ color: "red" }} />
                   </InputAdornment>
                 ),
               }}
               sx={{
-                input: { color: "white" },
-                label: { color: "white" },
+                "& .MuiOutlinedInput-input": { color: "black" },
+                "& .MuiInputLabel-root": { color: "black" },
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
+                "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
             />
 
@@ -147,14 +143,15 @@ export default function AddCar() {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <LocationOnIcon style={{ color: "white" }} />
+                    <LocationOnIcon style={{ color: "red" }} />
                   </InputAdornment>
                 ),
               }}
               sx={{
-                input: { color: "white" },
-                label: { color: "white" },
+                "& .MuiOutlinedInput-input": { color: "black" },
+                "& .MuiInputLabel-root": { color: "black" },
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
+                "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
             />
 
@@ -167,14 +164,15 @@ export default function AddCar() {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <ImageIcon style={{ color: "white" }} />
+                    <ImageIcon style={{ color: "red" }} />
                   </InputAdornment>
                 ),
               }}
-              sx={{
-                input: { color: "white" },
-                label: { color: "white" },
+               sx={{
+                "& .MuiOutlinedInput-input": { color: "black" }, 
+                "& .MuiInputLabel-root": { color: "black" },     
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
+                "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
               className="col-span-1 md:col-span-2"
             />
@@ -186,10 +184,11 @@ export default function AddCar() {
               value="Provider Name"
               fullWidth
               InputProps={{ readOnly: true }}
-              sx={{
-                input: { color: "white" },
-                label: { color: "white" },
+               sx={{
+                "& .MuiOutlinedInput-input": { color: "black" }, 
+                "& .MuiInputLabel-root": { color: "black" },     
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
+                "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
             />
 
@@ -200,10 +199,11 @@ export default function AddCar() {
               value="provider@example.com"
               fullWidth
               InputProps={{ readOnly: true }}
-              sx={{
-                input: { color: "white" },
-                label: { color: "white" },
+                sx={{
+                "& .MuiOutlinedInput-input": { color: "black" }, 
+                "& .MuiInputLabel-root": { color: "black" },     
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
+                "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
             />
 
