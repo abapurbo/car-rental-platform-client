@@ -3,7 +3,7 @@ import CarCard from "../../Components/CarCard/CarCard";
 
 export default function FeaturedCars() {
   return (
-    <div className="container mx-auto px-6 lg:px-10 mt-20">
+    <div className="container mx-auto px-6 lg:px-12 mt-20">
 
       {/* ✅ Section Title */}
       <div className="text-center mb-12">
@@ -21,6 +21,8 @@ export default function FeaturedCars() {
 
       {/* ✅ Car Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <CarCard />
+        <CarCard />
         <CarCard />
         <CarCard />
         <CarCard />

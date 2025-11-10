@@ -8,50 +8,57 @@ import MyBookings from "../Pages/MyBookings/MyBookings";
 import BrowseCars from "../Pages/BrowseCars/BrowseCars";
 import Login from "../Pages/LoginAndSignup/Login";
 import SignUp from "../Pages/LoginAndSignup/SignUp";
+import PrivateRoutes from "../Private/PrivateRoutes";
 // lazy loading
-const MainLayouts=lazy(()=>import("../Layouts/MainLayouts"))
-const Error =lazy(()=>import("../Pages/Error/Error"))
+const MainLayouts = lazy(() => import("../Layouts/MainLayouts"))
+const Error = lazy(() => import("../Pages/Error/Error"))
 export const router = createBrowserRouter([
     {
-        path:'/',
-        element:<Suspense fallback={<Spinner/>}>
+        path: '/',
+        element: <Suspense fallback={<Spinner />}>
             <MainLayouts></MainLayouts>
         </Suspense>,
-        errorElement:<Suspense fallback={<Spinner/>}>
+        errorElement: <Suspense fallback={<Spinner />}>
             <Error></Error>
         </Suspense>,
-        children:[
+        children: [
             {
-                index:true,
-                Component:Home,
+                index: true,
+                Component: Home,
             },
             {
-                path:'/add-car',
-                Component:AddCars
+                path: '/add-car',
+                element: <PrivateRoutes>
+                    <AddCars></AddCars>
+                </PrivateRoutes>
             },
             {
-                path:'/my-listings',
-                Component:MyListings
+                path: '/my-listings',
+                element: <PrivateRoutes>
+                    <MyListings></MyListings>
+                </PrivateRoutes>
             },
             {
-              path:'/my-bookings',
-              Component:MyBookings
+                path: '/my-bookings',
+                element: <PrivateRoutes>
+                    <MyBookings></MyBookings>
+                </PrivateRoutes>
             },
             {
-                path:'/browse-cars',
-                Component:BrowseCars
+                path: '/browse-cars',
+                Component: BrowseCars
             },
             {
-                path:'/login',
-                Component:Login
+                path: '/login',
+                Component: Login
             },
             {
-                path:'/signUp',
-                Component:SignUp
+                path: '/signUp',
+                Component: SignUp
             }
         ]
 
     },
-    
+
 ])
 

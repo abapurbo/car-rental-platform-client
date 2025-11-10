@@ -18,7 +18,7 @@ export default function MyListings() {
         
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-extrabold text-red-500 tracking-wide drop-shadow-[0_0_4px_rgba(255,75,75,0.4)]">
+          <h2 className="text-3xl font-extrabold text-red-600 tracking-wide drop-shadow-[0_0_4px_rgba(255,75,75,0.4)]">
             My Car <span className="text-black">Listings</span>
           </h2>
           <button className="bg-red-600 hover:bg-red-700 active:scale-95 transition text-white font-semibold px-5 py-2 rounded-xl shadow-lg shadow-red-600/40">

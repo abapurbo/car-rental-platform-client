@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import useAuth from "../../Hooks/useAuth";
+import { MdOutlineLogout } from "react-icons/md";
 
 export default function Navbar() {
   const { user } = useAuth();
-  const location=useLocation()
+  const location = useLocation()
   // Scroll state
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -39,9 +40,8 @@ export default function Navbar() {
 
   return (
     <div
-      className={`fixed top-0 w-full z-50 ${location.pathname==='/'? "bg-transparent" : "bg-linear-to-r from-black/25" } transition-transform duration-500 ${
-        showNavbar ? "translate-y-0" : "-translate-y-full"
-      }`}
+      className={`fixed top-0 w-full z-50 ${location.pathname === '/' ? "bg-transparent" : "bg-linear-to-r from-black/25"} transition-transform duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"
+        }`}
     >
       {/* Centered container */}
       <div className="container mx-auto flex justify-between items-center px-8 py-3  text-black">
@@ -59,10 +59,9 @@ export default function Navbar() {
               to={navLink.path}
               key={index}
               className={({ isActive }) =>
-                `text-[16px] transition ${
-                  isActive
-                    ? "text-red-600 font-bold"
-                    : "text-black font-medium hover:text-red-600"
+                `text-[16px] transition ${isActive
+                  ? "text-red-600 font-bold"
+                  : "text-black font-medium hover:text-red-600"
                 }`
               }
             >
@@ -92,27 +91,29 @@ export default function Navbar() {
                 className="menu menu-sm dropdown-content bg-white text-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <a>Profile</a>
+                  {user?.displayName}
                 </li>
                 <li>
-                  <a>Settings</a>
+                  {user?.email}
                 </li>
                 <li>
-                  <a>Logout</a>
+                  <button>
+                    <MdOutlineLogout />
+
+                  </button>
                 </li>
               </ul>
             </div>
-          ) : (
+          ) : 
             <div className="flex gap-4">
               {authNavLinks.map((link, index) => (
                 <NavLink
                   to={link.path}
                   key={index}
                   className={({ isActive }) =>
-                    `px-4 py-2 rounded-full border-2  border-red-600 text-[15px] font-semibold transition ${
-                      isActive
-                        ? "bg-red-600 text-white"
-                        : "text-red-600 hover:bg-red-600 hover:shadow-[10px_10px_30px_rgba(255,0,0,0.3)] hover:text-white"
+                    `px-4 py-2 rounded-full border-2  border-red-600 text-[15px] font-semibold transition ${isActive
+                      ? "bg-red-600 text-white"
+                      : "text-red-600 hover:bg-red-600 hover:shadow-[10px_10px_30px_rgba(255,0,0,0.3)] hover:text-white"
                     }`
                   }
                 >
@@ -120,7 +121,7 @@ export default function Navbar() {
                 </NavLink>
               ))}
             </div>
-          )}
+          }
         </div>
       </div>
     </div>

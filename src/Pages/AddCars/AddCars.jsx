@@ -16,6 +16,25 @@ import ImageIcon from "@mui/icons-material/Image";
 import DescriptionIcon from "@mui/icons-material/Description";
 
 export default function AddCar() {
+
+  // handle add car
+  const handleAddCar = (e) => {
+    e.preventDefault()
+
+    const formData = e.target
+    const name=formData.name.value;
+    const category=formData.category.value;
+    const description=formData.description.value;
+    const rentPrice=formData.price.value;
+    const location=formData.location.value;
+    const carImg=formData.image.value;
+    const providerName=formData.providerName.value;
+    const providerEmail=formData.providerEmail.value
+    
+    console.log(name,category,description,rentPrice,location,carImg,providerEmail,providerName);
+    
+
+  }
   return (
     <div className="min-h-screen  pt-32 pb-18 flex justify-center items-center p-6  ">
       <div className="w-full max-w-4xl p-8 rounded-[5px] bg-black/30 backdrop-blur-lg border border-white/20 shadow-xl">
@@ -33,7 +52,7 @@ export default function AddCar() {
           Fill in the details to list your car for rent
         </Typography>
 
-        <form action="">
+        <form onSubmit={handleAddCar}>
           <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             {/* Car Name */}
@@ -50,12 +69,13 @@ export default function AddCar() {
                 ),
               }}
               variant="outlined"
-                sx={{
-                "& .MuiOutlinedInput-input": { color: "black" }, 
-                "& .MuiInputLabel-root": { color: "black" },     
+              sx={{
+                "& .MuiOutlinedInput-input": { color: "black" },
+                "& .MuiInputLabel-root": { color: "black" },
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
                 "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
+              required
             />
 
             {/* Category */}
@@ -63,7 +83,7 @@ export default function AddCar() {
               select
               name="category"
               label="Category"
-             defaultValue="Sedan"
+              defaultValue="Sedan"
               fullWidth
               InputProps={{
                 startAdornment: (
@@ -103,8 +123,8 @@ export default function AddCar() {
                 ),
               }}
               sx={{
-                "& .MuiOutlinedInput-input": { color: "black" }, 
-                "& .MuiInputLabel-root": { color: "black" },   
+                "& .MuiOutlinedInput-input": { color: "black" },
+                "& .MuiInputLabel-root": { color: "black" },
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
                 "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
@@ -168,9 +188,9 @@ export default function AddCar() {
                   </InputAdornment>
                 ),
               }}
-               sx={{
-                "& .MuiOutlinedInput-input": { color: "black" }, 
-                "& .MuiInputLabel-root": { color: "black" },     
+              sx={{
+                "& .MuiOutlinedInput-input": { color: "black" },
+                "& .MuiInputLabel-root": { color: "black" },
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
                 "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
@@ -184,9 +204,9 @@ export default function AddCar() {
               value="Provider Name"
               fullWidth
               InputProps={{ readOnly: true }}
-               sx={{
-                "& .MuiOutlinedInput-input": { color: "black" }, 
-                "& .MuiInputLabel-root": { color: "black" },     
+              sx={{
+                "& .MuiOutlinedInput-input": { color: "black" },
+                "& .MuiInputLabel-root": { color: "black" },
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
                 "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
@@ -199,9 +219,9 @@ export default function AddCar() {
               value="provider@example.com"
               fullWidth
               InputProps={{ readOnly: true }}
-                sx={{
-                "& .MuiOutlinedInput-input": { color: "black" }, 
-                "& .MuiInputLabel-root": { color: "black" },     
+              sx={{
+                "& .MuiOutlinedInput-input": { color: "black" },
+                "& .MuiInputLabel-root": { color: "black" },
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
                 "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}

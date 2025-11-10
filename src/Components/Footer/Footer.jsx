@@ -6,8 +6,7 @@ export default function Footer() {
   return (
     <footer
       className="
-        relative
-        backdrop-blur-xl        /* গ্লাস ব্লার ইফেক্ট */
+        backdrop-blur-xl       
         border-t border-white/10
         shadow-lg shadow-black/50
         text-white

@@ -1,24 +1,25 @@
 import React from "react";
 import { Mail, Lock } from "lucide-react";
+import { FcGoogle } from "react-icons/fc"; // ✅ Google icon
 
 export default function Login() {
   return (
-    <div className="min-h-screen flex pt-18 items-center justify-center  px-4">
+    <div className="min-h-screen flex pt-32 pb-18 items-center justify-center px-4 ">
       
       {/* Card */}
-      <div className="bg-black/30 backdrop-blur-2xl border rounded-xl border-white/20 shadow-2xl p-10  w-full max-w-md">
+      <div className="bg-black/30 backdrop-blur-2xl border rounded-xl border-white/20 shadow-2xl p-10 w-full max-w-md">
         
         {/* Logo */}
         <h1 className="text-center text-4xl font-extrabold text-red-600 tracking-wide">
           Rent<span className="text-black">Wheels</span>
         </h1>
 
-        <p className="text-white text-center mt-2">
+        <p className="text-white text-center mt-2 opacity-90">
           Welcome back! Please login to continue
         </p>
 
         {/* Form */}
-        <form className="mt-10 space-y-6">
+        <form className="mt-10 space-y-4">
           
           {/* Email */}
           <div>
@@ -51,7 +52,24 @@ export default function Login() {
             Login
           </button>
 
-          <p className="text-center text-[16px] font-bold text-white mt-2">
+          {/* Divider */}
+          <div className="flex items-center my-6">
+            <div className="flex-grow h-px bg-white/30"></div>
+            <span className="px-3 text-white/70 text-sm font-medium">OR</span>
+            <div className="flex-grow h-px bg-white/30"></div>
+          </div>
+
+          {/* Google Login Button */}
+          <button
+            type="button"
+            className="w-full flex items-center justify-center gap-3 py-3 bg-white hover:bg-gray-100 active:scale-95 transition rounded-xl shadow-lg shadow-gray-400/40 font-semibold text-gray-800"
+          >
+            <FcGoogle size={24} />
+            Continue with Google
+          </button>
+
+          {/* Signup Link */}
+          <p className="text-center text-[16px] font-bold text-white mt-4">
             Don’t have an account?{" "}
             <a className="text-red-600 hover:underline" href="/signup">
               Sign Up
