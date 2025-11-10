@@ -14,25 +14,45 @@ import PaidIcon from "@mui/icons-material/Paid";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ImageIcon from "@mui/icons-material/Image";
 import DescriptionIcon from "@mui/icons-material/Description";
-
+import useAuth from '../../Hooks/useAuth'
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 export default function AddCar() {
-
+  const { user } = useAuth()
+  const axiosSecure = useAxiosSecure()
   // handle add car
   const handleAddCar = (e) => {
     e.preventDefault()
 
     const formData = e.target
-    const name=formData.name.value;
-    const category=formData.category.value;
-    const description=formData.description.value;
-    const rentPrice=formData.price.value;
-    const location=formData.location.value;
-    const carImg=formData.image.value;
-    const providerName=formData.providerName.value;
-    const providerEmail=formData.providerEmail.value
-    
-    console.log(name,category,description,rentPrice,location,carImg,providerEmail,providerName);
-    
+    const name = formData.name.value;
+    const category = formData.category.value;
+    const description = formData.description.value;
+    const rentPrice = formData.price.value;
+    const location = formData.location.value;
+    const carImg = formData.image.value;
+    const providerName = formData.providerName.value;
+    const providerEmail = formData.providerEmail.value
+
+    const addCarInfo = {
+      car_name: name,
+      category: category,
+      description: description,
+      rent_price: rentPrice,
+      location: location,
+      image: carImg,
+      providerName: providerName,
+      providerEmail: providerEmail
+    }
+
+    axiosSecure.post('/all-cars', addCarInfo)
+      .then(res => {
+        if (res.data.success) {
+          toast.success("Car added successfully!");
+          formData.reset();
+        }
+      })
+      .catch(() => toast.error("Failed to add car"));
 
   }
   return (
@@ -98,6 +118,7 @@ export default function AddCar() {
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
                 "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
+              required
             >
               <MenuItem value="Sedan">Sedan</MenuItem>
               <MenuItem value="SUV">SUV</MenuItem>
@@ -112,7 +133,7 @@ export default function AddCar() {
               label="Description"
               placeholder="Write car description"
               multiline
-              rows={1}
+              rows={2}
               fullWidth
               variant="outlined"
               InputProps={{
@@ -129,6 +150,7 @@ export default function AddCar() {
                 "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
               className="col-span-1 md:col-span-2"
+              required
             />
 
 
@@ -152,6 +174,7 @@ export default function AddCar() {
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
                 "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
+              required
             />
 
             {/* Location */}
@@ -173,6 +196,7 @@ export default function AddCar() {
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
                 "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
+              required
             />
 
             {/* Image URL - full width */}
@@ -180,6 +204,7 @@ export default function AddCar() {
               name="image"
               label="Image URL"
               placeholder="Enter image URL"
+              type="url"
               fullWidth
               InputProps={{
                 startAdornment: (
@@ -195,13 +220,14 @@ export default function AddCar() {
                 "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
               className="col-span-1 md:col-span-2"
+              required
             />
 
             {/* Provider Name */}
             <TextField
               name="providerName"
               label="Provider Name"
-              value="Provider Name"
+              value={user?.displayName}
               fullWidth
               InputProps={{ readOnly: true }}
               sx={{
@@ -210,13 +236,14 @@ export default function AddCar() {
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
                 "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
+              required
             />
 
             {/* Provider Email */}
             <TextField
               name="providerEmail"
               label="Provider Email"
-              value="provider@example.com"
+              value={user?.email}
               fullWidth
               InputProps={{ readOnly: true }}
               sx={{
@@ -225,6 +252,7 @@ export default function AddCar() {
                 "& .MuiOutlinedInput-root fieldset": { borderColor: "white" },
                 "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
               }}
+              required
             />
 
             {/* Button - full width */}

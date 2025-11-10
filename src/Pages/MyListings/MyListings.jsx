@@ -14,7 +14,7 @@ export default function MyListings() {
   return (
     <div className="min-h-screen inter-font flex items-center justify-center px-4 pt-32 pb-20 ">
       
-      <div className="w-full max-w-6xl bg-black/30 backdrop-blur-2xl border border-white/20 rounded-xs shadow-2xl p-10">
+      <div className="w-full max-w-6xl bg-black/20 backdrop-blur-2xl border border-white/20 rounded-xs shadow-2xl p-10">
         
         {/* Header */}
         <div className="flex justify-between items-center mb-8">

@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CarCard from "../../Components/CarCard/CarCard";
+import useAxios from "../../Hooks/useAxios";
 
 export default function FeaturedCars() {
+  const [latestCars, setLatestCars] = useState([])
+  const instance = useAxios()
+  useEffect(() => {
+    instance.get('/latest-cars')
+      .then(result => {
+        setLatestCars(result?.data)
+      })
+  }, [])
+  console.log(latestCars)
   return (
     <div className="container mx-auto px-6 lg:px-12 mt-20">
 
@@ -21,12 +31,10 @@ export default function FeaturedCars() {
 
       {/* ✅ Car Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
+       {
+        latestCars.map((car,index)=><CarCard key={index} car={car}></CarCard>)
+       }
+       
       </div>
 
     </div>
