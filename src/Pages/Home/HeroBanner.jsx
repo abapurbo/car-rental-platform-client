@@ -25,16 +25,16 @@ export default function HeroBanner() {
         className="mySwiper"
       >
         <SwiperSlide>
-            <div className='w-full h-full '>
+            <div className='w-full h-full inter-font'>
               <div className="banner container mx-auto w-full p-10 h-full">
 
               <div className="w-full mt-10 flex flex-col  ">
                 <div>
-                  <h1 className="text-black  font-extrabold text-5xl text-start leading-tight">
+                  <h1 className="text-black noto-sans-georgian font-extrabold text-5xl text-start leading-tight">
                     <span>Looking To Save More</span><br />
                     On Your <span className="bg-red-600 text-white transform -skew-x-12 inline-block px-2">Rental Car?</span>
                   </h1>
-                  <p className="text-xl italic text-start text-gray-800 mt-6">
+                  <p className="text-xl  italic text-start text-gray-800 mt-6">
                     We Provide The Best Car Options And Expert Services For<br />
                     The Greatest Customer Experience
                   </p>
