@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function CarCard({ car }) {
-  const { car_name, image, providerName, category,rent_price} = car || {}
+  const { car_name, image, providerName, category,rent_price,status} = car || {}
   return (
     <div className="relative hover:border hover:border-red-500 max-w-xs bg-white rounded-xl shadow-[0_4px_15px_rgba(255,0,0,0.2)] overflow-hidden p-4 transition hover:shadow-2xl hover:scale-[1.02] duration-300">
       {/* Car Image Wrapper */}
@@ -14,7 +14,7 @@ export default function CarCard({ car }) {
 
         {/* Available Badge */}
         <div className="absolute top-2 right-2 bg-red-50 text-red-800 text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-          Available
+          {status}
         </div>
       </div>
 
@@ -39,7 +39,7 @@ export default function CarCard({ car }) {
 
       {/* View Details Button */}
       <button
-        className="w-full border border-gray-700 text-gray-800 text-sm font-semibold px-4 py-2 rounded-full hover:border-none hover:duration-1000 hover:bg-red-600 hover:text-white transition"
+        className="w-full border border-gray-700 text-gray-800 text-sm font-semibold px-4 py-2 rounded-full hover:border-none hover:duration-1000 hover:bg-red-500 hover:text-white transition"
         type="button"
       >
         View Details

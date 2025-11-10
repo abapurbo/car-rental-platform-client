@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import ImageIcon from "@mui/icons-material/Image";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAuth from "../../Hooks/useAuth";
 
 export default function MyListings() {
+  const [myCars, setMyCars] = useState([])
+  const { user } = useAuth()
+  const axiosSecure = useAxiosSecure()
   const cars = [
     { id: 1, name: "BMW X5", category: "SUV", rentPrice: 120, location: "Dhaka", status: "available" },
     { id: 2, name: "Toyota Corolla", category: "Sedan", rentPrice: 80, location: "Chattogram", status: "booked" },
     { id: 3, name: "Tesla Model 3", category: "Electric", rentPrice: 200, location: "Dhaka", status: "available" },
   ];
 
+  useEffect(() => {
+    axiosSecure(`/my-listing-cars?email=${user?.email}`)
+      .then(result=>{
+        setMyCars(result.data)
+      })
+  }, [user])
+
   return (
     <div className="min-h-screen inter-font flex items-center justify-center px-4 pt-32 pb-20 ">
-      
+
       <div className="w-full max-w-6xl bg-black/20 backdrop-blur-2xl border border-white/20 rounded-xs shadow-2xl p-10">
-        
+
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-extrabold text-red-600 tracking-wide drop-shadow-[0_0_4px_rgba(255,75,75,0.4)]">
@@ -41,28 +52,27 @@ export default function MyListings() {
             </thead>
 
             <tbody>
-              {cars.map((car) => (
+              {myCars.map((car,index) => (
                 <tr
-                  key={car.id}
+                  key={index}
                   className="bg-white/10 hover:bg-white/20 transition-all border border-white/20 rounded-xl shadow-sm hover:shadow-red-500/20"
                 >
                   <td className="py-3 px-4 flex items-center gap-2 text-black font-semibold">
-                    <ImageIcon className="text-red-600" fontSize="small" />
-                    {car.name}
+                    <img className="w-14 rounded-xs" src={car?.image} alt="" />
+                    {car.car_name}
                   </td>
 
                   <td className="py-3 px-4 text-black/90">{car.category}</td>
-                  <td className="py-3 px-4 text-black/90 font-semibold">${car.rentPrice}</td>
+                  <td className="py-3 px-4 text-black/90 font-semibold">${car.rent_price}<small>/day</small></td>
                   <td className="py-3 px-4 text-black/90">{car.location}</td>
 
                   {/* Status Badge */}
                   <td className="py-3 px-4">
                     <span
-                      className={`px-3 py-1 rounded-full text-[14px] font-bold    ${
-                        car.status === "available"
-                          ? " text-green-500 border border-green-500/30"
-                          : " text-red-600 border border-red-400/30"
-                      }`}
+                      className={`px-3 py-1 rounded-full text-[14px] font-bold    ${car.status === "available"
+                        ? " text-green-500 border border-green-500/30"
+                        : " text-red-600 border border-red-400/30"
+                        }`}
                     >
                       {car.status}
                     </span>
