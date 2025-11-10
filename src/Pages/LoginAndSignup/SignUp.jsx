@@ -4,10 +4,12 @@ import { FcGoogle } from "react-icons/fc"; // Google icon
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router";
 
 export default function SignUp() {
   const { createUser, profileUpdate,providerGoogle} = useAuth()
   const [showpass, setShowpass] = useState(true)
+  const navigate=useNavigate()
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
@@ -45,13 +47,18 @@ export default function SignUp() {
       .then((result) => {
         console.log(result);
         profileUpdate(profile);
-        toast.success('✅ Successfully created your account!');
+        toast.success('Successfully created your account!');
+        navigate('/')
       })
       .catch(err => {
         console.error(err);
-        toast.error('Failed to create account. Please try again.');
       });
   };
+
+  const handleGooleProvider=async()=>{
+    await providerGoogle()
+    await navigate('/')
+  }
 
 
   return (
@@ -150,7 +157,7 @@ export default function SignUp() {
         </div>
 
         {/* Google SignUp Button */}
-        <button onClick={providerGoogle} className="w-full  flex text-black items-center justify-center gap-3 py-3 bg-white hover:bg-gray-100 transition rounded-xl font-semibold shadow-md">
+        <button onClick={()=>handleGooleProvider()} className="w-full  flex text-black items-center justify-center gap-3 py-3 bg-white hover:bg-gray-100 transition rounded-xl font-semibold shadow-md">
           <FcGoogle size={24} />
           Sign Up with Google
         </button>

@@ -4,7 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import { MdOutlineLogout } from "react-icons/md";
 
 export default function Navbar() {
-  const { user } = useAuth();
+  const { user,logOutUser } = useAuth();
   const location = useLocation()
   // Scroll state
   const [showNavbar, setShowNavbar] = useState(true);
@@ -82,29 +82,42 @@ export default function Navbar() {
                 <div className="w-10 rounded-full ring ring-red-500 ring-offset-2 ring-offset-white">
                   <img
                     alt="User avatar"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    src={user.photoURL !== null ? user?.photoURL :'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'}
                   />
                 </div>
               </div>
               <ul
                 tabIndex={-1}
-                className="menu menu-sm dropdown-content bg-white text-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-white text-black rounded-2xl shadow-xl mt-3 w-60 p-4 z-[20] border border-gray-100 animate-[fadeIn_0.2s_ease-out]"
               >
-                <li>
-                  {user?.displayName}
-                </li>
-                <li>
-                  {user?.email}
-                </li>
-                <li>
-                  <button>
-                    <MdOutlineLogout />
 
+                {/* User Info */}
+                <li className="pointer-events-none">
+                  <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white font-semibold">
+                      {user?.displayName?.[0] || "U"}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-sm">{user?.displayName}</span>
+                      <span className="text-xs text-gray-600">{user?.email}</span>
+                    </div>
+                  </div>
+                </li>
+
+                <div className="my-2 border-t border-gray-200"></div>
+
+                {/* Logout */}
+                <li className="mt-1">
+                  <button onClick={logOutUser} className="flex items-center gap-2 text-red-600 hover:bg-red-50 rounded-xl px-3 py-2 font-medium">
+                    <MdOutlineLogout className="text-lg" />
+                    Logout
                   </button>
                 </li>
+
               </ul>
+
             </div>
-          ) : 
+          ) :
             <div className="flex gap-4">
               {authNavLinks.map((link, index) => (
                 <NavLink
