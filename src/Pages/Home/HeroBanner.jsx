@@ -25,7 +25,7 @@ export default function HeroBanner() {
         className="mySwiper"
       >
         <SwiperSlide>
-            <div className='w-full h-full bg-linear-to-r from-black/25 to-transparent  '>
+            <div className='w-full h-full '>
               <div className="banner container mx-auto w-full p-10 h-full">
 
               <div className="w-full mt-10 flex flex-col  ">
@@ -42,7 +42,7 @@ export default function HeroBanner() {
                 <div className='flex flex-col mt-10 items-start'>
                   <h1 className='text-[15px] text-black font-semibold'>BMW M8 Competition</h1>
                   <p className='text-2xl font-bold text-red-600'>$1178.90<small className='text-gray-800 font-semibold'>/day</small></p>
-                  <div className='flex justify-around items-center border-t-2 mt-3 border-l-2 border-r-2 rounded-full border-gray-400 w-70 h-13'>
+                  <div className='flex justify-around items-center border-t-2 mt-3 border-l-2 border-r-2 rounded-full border-gray-500 w-70 h-13'>
                     <p className='text-black flex flex-col items-center'>
                       <IoMdSpeedometer className='text-red-600' />
                       <span className='text-xs font-semibold text-gray-800'>4,000</span>

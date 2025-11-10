@@ -3,14 +3,14 @@ import { Mail, Lock } from "lucide-react";
 
 export default function Login() {
   return (
-    <div className="min-h-screen flex items-center justify-center  px-4">
+    <div className="min-h-screen flex pt-18 items-center justify-center  px-4">
       
       {/* Card */}
       <div className="bg-black/30 backdrop-blur-2xl border rounded-xl border-white/20 shadow-2xl p-10  w-full max-w-md">
         
         {/* Logo */}
-        <h1 className="text-center text-4xl font-extrabold text-white tracking-wide">
-          Rent<span className="text-red-600">Wheels</span>
+        <h1 className="text-center text-4xl font-extrabold text-red-600 tracking-wide">
+          Rent<span className="text-black">Wheels</span>
         </h1>
 
         <p className="text-white text-center mt-2">

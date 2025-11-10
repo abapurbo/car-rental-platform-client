@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 
 export default function Navbar() {
   const { user } = useAuth();
-
+  const location=useLocation()
   // Scroll state
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 40) {
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
         setShowNavbar(false);
       } else {
         setShowNavbar(true);
@@ -39,7 +39,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`fixed top-0 w-full z-50 transition-transform duration-500 ${
+      className={`fixed top-0 w-full z-50 ${location.pathname==='/'? "bg-transparent" : "bg-linear-to-r from-black/25" } transition-transform duration-500 ${
         showNavbar ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -109,7 +109,7 @@ export default function Navbar() {
                   to={link.path}
                   key={index}
                   className={({ isActive }) =>
-                    `px-4 py-2 -skew-x-12 border-2  border-red-600 text-[15px] font-semibold transition ${
+                    `px-4 py-2 rounded-full border-2  border-red-600 text-[15px] font-semibold transition ${
                       isActive
                         ? "bg-red-600 text-white"
                         : "text-red-600 hover:bg-red-600 hover:shadow-[10px_10px_30px_rgba(255,0,0,0.3)] hover:text-white"
