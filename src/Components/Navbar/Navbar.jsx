@@ -4,7 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import { MdOutlineLogout } from "react-icons/md";
 
 export default function Navbar() {
-  const { user,logOutUser } = useAuth();
+  const { user, logOutUser } = useAuth();
   const location = useLocation()
   // Scroll state
   const [showNavbar, setShowNavbar] = useState(true);
@@ -40,7 +40,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`fixed top-0 w-full z-50 bg-black transition-transform duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"
+      className={`fixed top-0 w-full z-50 ${location.pathname === '/login' || location.pathname === '/signUp' || location.pathname==='/add-car'||location.pathname==='/my-bookings' ||location.pathname==='/my-listings'||location.pathname==='/browse-cars' ? 'bg-black/30':'bg-black'} transition-transform duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
     >
       {/* Centered container */}
@@ -82,7 +82,7 @@ export default function Navbar() {
                 <div className="w-10 rounded-full ring ring-red-500 ring-offset-2 ring-offset-white">
                   <img
                     alt="User avatar"
-                    src={user.photoURL !== null ? user?.photoURL :'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'}
+                    src={user.photoURL !== null ? user?.photoURL : 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'}
                   />
                 </div>
               </div>

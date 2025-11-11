@@ -51,7 +51,7 @@ export default function SignUp() {
         navigate('/')
       })
       .catch(err => {
-        console.error(err);
+        toast.error(err.code)
       });
   };
 
@@ -62,7 +62,7 @@ export default function SignUp() {
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center pt-32 pb-18 bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center pt-32 pb-18 ">
       {/* Card */}
       <div className="bg-black/30 backdrop-blur-2xl border rounded-xl border-white/20 shadow-2xl p-10 w-full max-w-md">
 
