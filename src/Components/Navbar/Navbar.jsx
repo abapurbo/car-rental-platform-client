@@ -47,7 +47,7 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center px-8 py-3  text-black">
         {/* Logo */}
         <div>
-          <Link className="text-3xl font-bold text-red-600 tracking-wide">
+          <Link className="text-3xl font-bold text-red-600">
             Rent<span className="text-white">Wheels</span>
           </Link>
         </div>
@@ -124,9 +124,9 @@ export default function Navbar() {
                   to={link.path}
                   key={index}
                   className={({ isActive }) =>
-                    `px-4 py-2 rounded-full border-2  border-red-600 text-[15px] font-semibold transition ${isActive
+                    `px-4 py-2 rounded-full border-1  border-red-600 text-[15px] font-semibold transition ${isActive
                       ? "bg-red-600 text-white"
-                      : "text-red-600 hover:bg-red-600 hover:shadow-[10px_10px_30px_rgba(255,0,0,0.3)] hover:text-white"
+                      : "text-white hover:bg-red-600 hover:shadow-[10px_10px_30px_rgba(255,0,0,0.3)] hover:text-white"
                     }`
                   }
                 >
