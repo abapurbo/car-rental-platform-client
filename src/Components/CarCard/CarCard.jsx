@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router";
 
 export default function CarCard({ car }) {
-  const { car_name, image, providerName, category,rent_price,status} = car || {}
+  const { _id,car_name, image, providerName, category, rent_price, status } = car || {}
   return (
     <div className="relative hover:border hover:border-red-500 max-w-xs bg-white rounded-xl shadow-[0_4px_15px_rgba(255,0,0,0.2)] overflow-hidden p-4 transition hover:shadow-2xl hover:scale-[1.02] duration-300">
       {/* Car Image Wrapper */}
@@ -38,12 +39,14 @@ export default function CarCard({ car }) {
       </div>
 
       {/* View Details Button */}
-      <button
-        className="w-full border border-gray-700 text-gray-800 text-sm font-semibold px-4 py-2 rounded-full hover:border-none hover:duration-1000 hover:bg-red-500 hover:text-white transition"
-        type="button"
-      >
-        View Details
-      </button>
+      <Link to={`/car-datails/${_id}`}>
+        <button
+          className="w-full border border-gray-700 text-gray-800 text-sm font-semibold px-4 py-2 rounded-full hover:border-none hover:duration-1000 hover:bg-red-500 hover:text-white transition"
+          type="button"
+        >
+          View Details
+        </button>
+      </Link>
     </div>
   );
 

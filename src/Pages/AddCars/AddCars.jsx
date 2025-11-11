@@ -57,7 +57,7 @@ export default function AddCar() {
   }
   return (
     <div className="min-h-screen  pt-32 pb-18 flex justify-center items-center p-6  ">
-      <div className="w-full max-w-4xl p-8 rounded-[5px] bg-black/30 backdrop-blur-lg border border-white/20 shadow-xl">
+      <div className="w-full max-w-4xl p-8 rounded-[5px] bg-black/25 backdrop-blur-lg border border-white/20 shadow-xl">
         <Typography
           variant="h4"
           textAlign="center"

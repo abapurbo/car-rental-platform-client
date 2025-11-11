@@ -9,6 +9,7 @@ import BrowseCars from "../Pages/BrowseCars/BrowseCars";
 import Login from "../Pages/LoginAndSignup/Login";
 import SignUp from "../Pages/LoginAndSignup/SignUp";
 import PrivateRoutes from "../Private/PrivateRoutes";
+import CarDetails from "../Pages/CarDetails/CarDetails";
 // lazy loading
 const MainLayouts = lazy(() => import("../Layouts/MainLayouts"))
 const Error = lazy(() => import("../Pages/Error/Error"))
@@ -36,6 +37,12 @@ export const router = createBrowserRouter([
                 path: '/my-listings',
                 element: <PrivateRoutes>
                     <MyListings></MyListings>
+                </PrivateRoutes>
+            },
+            {
+                path:'/car-datails/:id',
+                element:<PrivateRoutes>
+                    <CarDetails></CarDetails>
                 </PrivateRoutes>
             },
             {
