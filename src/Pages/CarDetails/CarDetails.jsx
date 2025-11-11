@@ -8,20 +8,19 @@ import {
   FaCarSide,
   FaEnvelope,
   FaUser,
-  FaStar,
 } from "react-icons/fa";
 
 export default function CarDetails() {
   const [carDetails, setCarDetails] = useState({});
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
-  //  console.log(carDetails)
+   console.log(carDetails)
   useEffect(() => {
-    axiosSecure.get(`/car-details/${id}`).then((res) => {
-      setCarDetails(res?.data);
-    });
+    axiosSecure.get(`/car-details/${id}`)
+      .then((res) => {
+        setCarDetails(res?.data);
+      });
   }, [id]);
-
   return (
     <div className="min-h-screen pt-32  flex items-center justify-center pb-16 px-4">
       <motion.div
@@ -36,7 +35,7 @@ export default function CarDetails() {
           <div className="md:w-1/2 h-72 md:h-auto">
             <img
               src={carDetails?.image}
-              alt={carDetails?.name}
+              alt={carDetails?.car_name}
               className="w-full h-full object-cover object-center"
             />
           </div>
@@ -48,13 +47,7 @@ export default function CarDetails() {
                 <h2 className=" text-2xl font-bold text-black">
                   {carDetails?.car_name}
                 </h2>
-                {/* <div className="flex items-center gap-1 text-yellow-400">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar className="text-gray-300" />
-                </div> */}
+
               </div>
               <p className="text-2xl text-gray-800 ">
                 {carDetails?.category || "Premium Sedan"}
@@ -75,8 +68,8 @@ export default function CarDetails() {
               </span>
               <span
                 className={`px-4 py-2 rounded-full font-medium ${carDetails?.status === "available"
-                    ? "bg-yellow-50 text-yellow-700 border border-yellow-700"
-                    : "bg-red-100 border border-red-300 text-red-950"
+                  ? "bg-yellow-50 text-yellow-700 border border-yellow-700"
+                  : "bg-red-100 border border-red-300 text-red-950"
                   }`}
               >
                 {carDetails?.status}

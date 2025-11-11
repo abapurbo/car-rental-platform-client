@@ -3,7 +3,7 @@ import React from "react";
 
 export default function CarBookingBar() {
   return (
-    <div className="p-4 flex justify-center items-center">
+    <div className="p-4 flex justify-center items-center z-30">
       <div className="w-full max-w-6xl bg-white rounded-2xl shadow-md flex flex-col md:flex-row items-center justify-between p-4 gap-3">
         {/* Pick-up Location */}
         <div className="flex flex-col flex-1">
@@ -109,7 +109,7 @@ export default function CarBookingBar() {
           <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 bg-gray-50">
             <input
               type="date"
-              className="w-full bg-transparent outline-none text-gray-700"
+              className="w-full bg-transparent outline-none text-gray-700 focus-within:"
               defaultValue="2023-12-12"
             />
             <svg

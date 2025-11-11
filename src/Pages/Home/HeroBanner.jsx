@@ -28,36 +28,36 @@ export default function HeroBanner() {
             <div className='w-full h-full inter-font'>
               <div className="banner container mx-auto w-full p-10 h-full">
 
-              <div className="w-full mt-10 flex flex-col  ">
+              <div className="w-full mt-8 flex flex-col  ">
                 <div>
-                  <h1 className="text-black noto-sans-georgian font-extrabold text-5xl text-start leading-tight">
+                  <h1 className="text-white noto-sans-georgian font-extrabold text-5xl text-start leading-tight">
                     <span>Looking To Save More</span><br />
                     On Your <span className="bg-red-600 text-white transform -skew-x-12 inline-block px-2">Rental Car?</span>
                   </h1>
-                  <p className="text-xl  italic text-start text-gray-800 mt-6">
+                  <p className="text-xl  italic text-start text-white mt-6">
                     We Provide The Best Car Options And Expert Services For<br />
                     The Greatest Customer Experience
                   </p>
                 </div>
                 <div className='flex flex-col mt-10 items-start'>
-                  <h1 className='text-[15px] text-black font-semibold'>BMW M8 Competition</h1>
-                  <p className='text-2xl font-bold text-red-600'>$1178.90<small className='text-gray-800 font-semibold'>/day</small></p>
+                  <h1 className='text-[15px] text-white font-semibold'>BMW M6 Competition</h1>
+                  <p className='text-2xl font-bold text-red-600'>$1178.90<small className='text-white font-semibold'>/day</small></p>
                   <div className='flex justify-around items-center border-t-2 mt-3 border-l-2 border-r-2 rounded-full border-gray-500 w-70 h-13'>
                     <p className='text-black flex flex-col items-center'>
                       <IoMdSpeedometer className='text-red-600' />
-                      <span className='text-xs font-semibold text-gray-800'>4,000</span>
+                      <span className='text-xs font-semibold text-white'>4,000</span>
                     </p>
                     <p className='text-black flex flex-col items-center'>
                       <TbManualGearbox className='text-red-600' />
-                      <span className='text-xs font-semibold text-gray-800'>Auto</span>
+                      <span className='text-xs font-semibold text-white'>Auto</span>
                     </p>
                     <p className='text-black flex flex-col items-center'>
                       <FaUserFriends className='text-red-600' />
-                      <span className='text-xs font-semibold text-gray-800'>Person</span>
+                      <span className='text-xs font-semibold text-white'>Person</span>
                     </p>
                     <p className='text-black flex flex-col items-center'>
                       <GiGasPump className='text-red-600' />
-                      <span className='text-xs font-semibold text-gray-800'>Petrol</span>
+                      <span className='text-xs font-semibold text-white'>Petrol</span>
                     </p>
                   </div>
                   <button className='btn bg-red-600 mt-5 text-white w-70 rounded-full'>Booking Now</button>

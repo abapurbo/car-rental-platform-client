@@ -40,7 +40,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`fixed top-0 w-full z-50 ${location.pathname === '/' ? "bg-transparent" : "bg-linear-to-r from-black/25"} transition-transform duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"
+      className={`fixed top-0 w-full z-50 ${location.pathname === '/' ? "bg-transparent" : "bg-black"} transition-transform duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
     >
       {/* Centered container */}
@@ -48,7 +48,7 @@ export default function Navbar() {
         {/* Logo */}
         <div>
           <Link className="text-3xl font-bold text-red-600 tracking-wide">
-            Rent<span className="text-black">Wheels</span>
+            Rent<span className="text-white">Wheels</span>
           </Link>
         </div>
 
@@ -60,8 +60,8 @@ export default function Navbar() {
               key={index}
               className={({ isActive }) =>
                 `text-[16px] transition ${isActive
-                  ? "text-red-600 font-bold"
-                  : "text-black font-medium hover:text-red-600"
+                  ? "text-red-600 underline underline-offset-3 font-bold"
+                  : "text-white font-medium hover:text-red-600 hover:underline hover:underline-offset-3 "
                 }`
               }
             >

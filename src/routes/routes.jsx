@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
                 </PrivateRoutes>
             },
             {
-                path:'/car-datails/:id',
+                path:'/car-details/:id',
                 element:<PrivateRoutes>
                     <CarDetails></CarDetails>
                 </PrivateRoutes>

@@ -8,7 +8,7 @@ import CarBookingBar from "../../Components/CarBookingBar/CarBookingBar";
 export default function Home() {
   return (
     <div>
-      <div className="pt-18 bg-linear-to-r from-black/25">
+      <div className="pt-18 bg-black z-20">
         <HeroBanner></HeroBanner>
       </div>
       <div className="-mt-16">
