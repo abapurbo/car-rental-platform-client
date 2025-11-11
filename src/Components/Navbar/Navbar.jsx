@@ -40,7 +40,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`fixed top-0 w-full z-50 ${location.pathname === '/login' || location.pathname === '/signUp' || location.pathname==='/add-car'||location.pathname==='/my-bookings' ||location.pathname==='/my-listings'||location.pathname==='/browse-cars' ? 'bg-black/30':'bg-black'} transition-transform duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"
+      className={`fixed top-0 w-full z-50 ${location.pathname === '/login' || location.pathname === '/signUp' || location.pathname === '/add-car' || location.pathname === '/my-bookings' || location.pathname === '/my-listings' || location.pathname === '/browse-cars' || location.pathname.includes('/car-details') ? 'bg-black/35' : 'bg-black'} transition-transform duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
     >
       {/* Centered container */}

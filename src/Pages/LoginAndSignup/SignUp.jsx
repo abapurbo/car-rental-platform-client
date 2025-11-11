@@ -49,6 +49,7 @@ export default function SignUp() {
         profileUpdate(profile);
         toast.success('Successfully created your account!');
         navigate('/')
+        e.target.reset()
       })
       .catch(err => {
         toast.error(err.code)

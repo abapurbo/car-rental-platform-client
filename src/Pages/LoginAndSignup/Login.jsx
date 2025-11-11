@@ -43,6 +43,7 @@ export default function Login() {
         console.log(result);
         toast.success('Successfully login your account!');
         navigate(location?.state || '/')
+        e.target.reset()
       })
       .catch(err => {
         console.error(err);
