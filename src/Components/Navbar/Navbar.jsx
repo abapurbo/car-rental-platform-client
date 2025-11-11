@@ -40,7 +40,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`fixed top-0 w-full z-50 ${location.pathname === '/' ? "bg-transparent" : "bg-black"} transition-transform duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"
+      className={`fixed top-0 w-full z-50 bg-black transition-transform duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
     >
       {/* Centered container */}

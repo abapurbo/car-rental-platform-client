@@ -1,5 +1,87 @@
 import React from "react";
+import { Quote, Star } from "lucide-react";
 
 export default function Testimonials() {
-  return <div>Testimonials</div>;
+  const testimonials = [
+    {
+      name: "David P.",
+      role: "Business Traveler",
+      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      review:
+        "Hertz is my go-to for business trips. The booking process is smooth, and I'm always impressed by the cleanliness and quality of the vehicles.",
+      rating: 5,
+    },
+    {
+      name: "Emily R.",
+      role: "Adventure Seeker",
+      image: "https://randomuser.me/api/portraits/women/45.jpg",
+      review:
+        "Rented a Jeep Grand Cherokee for a weekend mountain trip, and it was amazing! The car handled rough roads easily, and we had an incredible time.",
+      rating: 5,
+    },
+    {
+      name: "James C.",
+      role: "Luxury Enthusiast",
+      image: "https://randomuser.me/api/portraits/men/78.jpg",
+      review:
+        "I rented a BMW for a weekend getaway, and it was such a treat! The car was immaculate and luxurious, and the service made everything even more enjoyable.",
+      rating: 5,
+    },
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-6xl mx-auto px-6 text-center">
+        <div className="text-center mb-16">
+        <h2 className="text-4xl font-bold text-black mb-4">
+          What Our <span className="text-red-500">Customers Say</span>
+        </h2>
+        <p className="text-gray-500 text-lg ">
+          Hear from our satisfied clients who experienced the comfort and quality of our car rental service.
+        </p>
+          {/* Decorative underline */}
+          <div className="w-28 h-1 bg-red-600 mt-4 mx-auto rounded-full"></div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-10">
+          {testimonials.map((t, i) => (
+            <div
+              key={i}
+              className="relative bg-white shadow-lg rounded-2xl p-8 pt-12 border-t-4 border-red-500 hover:shadow-xl transition-all duration-300"
+            >
+              {/* Quote icon */}
+              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-red-500 p-3 rounded-full text-white">
+                <Quote size={24} />
+              </div>
+
+              {/* Stars */}
+              <div className="flex justify-center mb-4">
+                {Array.from({ length: t.rating }).map((_, idx) => (
+                  <Star
+                    key={idx}
+                    size={18}
+                    className="text-yellow-400 fill-yellow-400"
+                  />
+                ))}
+              </div>
+
+              {/* Review */}
+              <p className="text-gray-600 italic mb-8">“{t.review}”</p>
+
+              {/* User Info */}
+              <div className="flex flex-col items-center gap-2">
+                <img
+                  src={t.image}
+                  alt={t.name}
+                  className="w-16 h-16 rounded-full border-4 border-red-500 object-cover"
+                />
+                <h4 className="font-semibold text-gray-800">{t.name}</h4>
+                <p className="text-gray-500 text-sm">{t.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
