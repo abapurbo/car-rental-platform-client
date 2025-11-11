@@ -15,10 +15,16 @@ body {
     height: 100%;
 }
 
+/* pagination bullet */
+.swiper-pagination {
+    bottom: 60px !important;
+    /* joto icha height diba */
+}
+
 .swiper-slide {
     text-align: center;
     font-size: 18px;
-    height: 580px;
+    height: 620px;
     /* Center slide text vertically */
     display: flex;
     justify-content: center;
@@ -33,11 +39,7 @@ body {
 }
 
 
-.banner{
+.banner {
     background:
-        url('https://i.ibb.co.com/200N4sBL/bmw-m8-competition-individual-rosso-corsa-stage-teaser-02-removebg-preview-1.png')
-        no-repeat left 450px bottom 50px / 1050px auto;
+        url('https://i.ibb.co.com/200N4sBL/bmw-m8-competition-individual-rosso-corsa-stage-teaser-02-removebg-preview-1.png') no-repeat left 450px bottom 100px / 1050px auto;
 }
-
-
-

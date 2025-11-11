@@ -4,11 +4,16 @@ import FeaturedCars from './FeaturedCars'
 import WhyRentWithUs from "./WhyRentWithUs";
 import TopRatedCars from "./TopRatedCars";
 import Testimonials from './Testimonials'
+import CarBookingBar from "../../Components/CarBookingBar/CarBookingBar";
 export default function Home() {
   return (
     <div>
       <div className="pt-18 bg-linear-to-r from-black/25">
         <HeroBanner></HeroBanner>
+      </div>
+      <div className="-mt-16">
+       <CarBookingBar></CarBookingBar>
+
       </div>
       {/* features car section */}
       <div>

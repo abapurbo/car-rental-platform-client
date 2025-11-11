@@ -6,7 +6,6 @@ import {
   FaMapMarkerAlt,
   FaDollarSign,
   FaCarSide,
-  FaClock,
   FaEnvelope,
   FaUser,
   FaStar,
@@ -16,7 +15,7 @@ export default function CarDetails() {
   const [carDetails, setCarDetails] = useState({});
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
-
+  //  console.log(carDetails)
   useEffect(() => {
     axiosSecure.get(`/car-details/${id}`).then((res) => {
       setCarDetails(res?.data);
@@ -24,12 +23,12 @@ export default function CarDetails() {
   }, [id]);
 
   return (
-    <div className="min-h-screen pt-32 bg-gray-100 flex items-center justify-center pb-16 px-4">
+    <div className="min-h-screen pt-32  flex items-center justify-center pb-16 px-4">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-5xl bg-white shadow-xl rounded-3xl overflow-hidden border border-gray-200"
+        className="w-full max-w-5xl   hover:border hover:border-red-300  hover:shadow-[0_4px_15px_rgba(255,0,0,0.2)] shadow-xl rounded-3xl overflow-hidden border border-gray-200"
       >
         {/* Top Section */}
         <div className="flex flex-col md:flex-row">
@@ -46,18 +45,18 @@ export default function CarDetails() {
           <div className="md:w-1/2 p-8 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between">
-                <h2 className="text-3xl font-bold text-gray-800">
-                  {carDetails?.name}
+                <h2 className=" text-2xl font-bold text-black">
+                  {carDetails?.car_name}
                 </h2>
-                <div className="flex items-center gap-1 text-yellow-400">
+                {/* <div className="flex items-center gap-1 text-yellow-400">
                   <FaStar />
                   <FaStar />
                   <FaStar />
                   <FaStar />
                   <FaStar className="text-gray-300" />
-                </div>
+                </div> */}
               </div>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-2xl text-gray-800 ">
                 {carDetails?.category || "Premium Sedan"}
               </p>
 
@@ -68,18 +67,17 @@ export default function CarDetails() {
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <span className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full font-medium flex items-center gap-2">
+              <span className="px-4 py-2 bg-blue-50 text-blue-700 border border-blue-200 rounded-full font-medium flex items-center gap-2">
                 <FaDollarSign /> ${carDetails?.rent_price}/day
               </span>
-              <span className="px-4 py-2 bg-green-50 text-green-700 rounded-full font-medium flex items-center gap-2">
+              <span className="px-4 py-2 bg-green-50 border border-green-300 text-green-700 rounded-full font-medium flex items-center gap-2">
                 <FaMapMarkerAlt /> {carDetails?.location}
               </span>
               <span
-                className={`px-4 py-2 rounded-full font-medium ${
-                  carDetails?.status === "Available"
-                    ? "bg-yellow-50 text-yellow-700"
-                    : "bg-gray-100 text-gray-500"
-                }`}
+                className={`px-4 py-2 rounded-full font-medium ${carDetails?.status === "available"
+                    ? "bg-yellow-50 text-yellow-700 border border-yellow-700"
+                    : "bg-red-100 border border-red-300 text-red-950"
+                  }`}
               >
                 {carDetails?.status}
               </span>
@@ -95,7 +93,7 @@ export default function CarDetails() {
           {/* Vehicle Specs */}
           <div className="col-span-2 bg-gray-50 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
             <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-              <FaCarSide className="text-blue-600" /> Vehicle Specifications
+              <FaCarSide className="text-red-600" /> Vehicle Specifications
             </h3>
             <div className="grid grid-cols-2 gap-y-3 text-gray-700">
               <p>
@@ -120,7 +118,7 @@ export default function CarDetails() {
           {/* Provider */}
           <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
             <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-              <FaUser className="text-blue-600" /> Provider Details
+              <FaUser className="text-red-600" /> Provider Details
             </h3>
             <div className="text-gray-700 space-y-3">
               <p>
@@ -128,7 +126,7 @@ export default function CarDetails() {
                 {carDetails?.providerName}
               </p>
               <p className="flex items-center gap-2">
-                <FaEnvelope className="text-gray-500" />
+                <FaEnvelope className="text-red-600" />
                 {carDetails?.providerEmail}
               </p>
             </div>
@@ -145,7 +143,7 @@ export default function CarDetails() {
           </div>
           <motion.button
             whileHover={{ scale: 1.05 }}
-            className="mt-4 w-46 border border-red-200 sm:mt-0 px-10 py-3  text-red-600 font-semibold rounded-full shadow-[0_4px_15px_rgba(255,0,0,0.2)] hover:shadow-xl transition-all"
+            className="mt-4 w-46 border hover:bg-red-500 hover:text-white border-red-400 sm:mt-0 px-10 py-3  text-red-600 font-semibold rounded-full hover:shadow-[0_4px_15px_rgba(255,0,0,0.2)]  transition-all"
           >
             Book Now
           </motion.button>

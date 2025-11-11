@@ -4,7 +4,7 @@ import { Link } from "react-router";
 export default function CarCard({ car }) {
   const { _id,car_name, image, providerName, category, rent_price, status } = car || {}
   return (
-    <div className="relative hover:border hover:border-red-500 max-w-xs bg-white rounded-xl shadow-[0_4px_15px_rgba(255,0,0,0.2)] overflow-hidden p-4 transition hover:shadow-2xl hover:scale-[1.02] duration-300">
+    <div className="relative hover:border-r-2 hover:border-l-2 hover:border-red-500 max-w-xs bg-white rounded-xl shadow-[0_4px_15px_rgba(255,0,0,0.2)] overflow-hidden p-4 transition hover:shadow-2xl hover:scale-[1.02] duration-300">
       {/* Car Image Wrapper */}
       <div className="relative">
         <img
