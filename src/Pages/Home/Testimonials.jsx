@@ -31,19 +31,19 @@ export default function Testimonials() {
 
   return (
     <section className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      <div className=" container mx-auto md:px-10 px-6 text-center">
         <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-black mb-4">
+        <h2 className="text-4xl  font-bold text-black mb-2">
           What Our <span className="text-red-500">Customers Say</span>
         </h2>
-        <p className="text-gray-500 text-lg ">
+        <p className="text-gray-500 md:max-w-lg mx-auto text-lg ">
           Hear from our satisfied clients who experienced the comfort and quality of our car rental service.
         </p>
           {/* Decorative underline */}
-          <div className="w-28 h-1 bg-red-600 mt-4 mx-auto rounded-full"></div>
+          <div className="w-28 h-1 bg-red-600 mt-6 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 md:gap-10 ">
           {testimonials.map((t, i) => (
             <div
               key={i}

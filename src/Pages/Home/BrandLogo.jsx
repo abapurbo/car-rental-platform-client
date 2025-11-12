@@ -31,7 +31,7 @@ export default function BrandLogo() {
             <div className="py-16 md:px-10 px-6 container mx-auto">
                 {/* Title */}
                 <div className="text-center mb-14">
-                    <h2 className="md:text-4xl text-3xl font-bold text-gray-800 mb-2">
+                    <h2 className="text-4xl  font-bold text-gray-800 mb-2">
                         Brands <span className="text-red-600">we offer</span>
                     </h2>
 

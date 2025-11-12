@@ -26,9 +26,9 @@ export default function Home() {
       {/* <div>
         <TopRatedCars></TopRatedCars>
       </div> */}
-      {/* <div>
+      <div>
         <Testimonials></Testimonials>
-      </div> */}
+      </div>
       <div >
         <BrandLogo></BrandLogo>
       </div>
