@@ -3,7 +3,8 @@ import { FaSearch } from "react-icons/fa";
 import useAxios from "../../Hooks/useAxios";
 import CarCard from "../../Components/CarCard/CarCard";
 import Spinner from "../../Components/Spinner/Spinner";
-
+import Lottie from "lottie-react";
+import error from '../../assets/Lottie/error.json'
 export default function BrowseCars() {
   const [allCars, setAllCars] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -24,7 +25,7 @@ export default function BrowseCars() {
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      setLoading(true); 
+      setLoading(true);
       const endpoint = searchText.trim() === "" ? "/all-cars" : `/cars?search=${searchText}`;
       instance.get(endpoint)
         .then(res => {
@@ -32,7 +33,7 @@ export default function BrowseCars() {
           setLoading(false);
         })
         .catch(err => setLoading(false));
-    }, 500); 
+    }, 500);
 
     return () => clearTimeout(handler);
   }, [searchText, instance]);
@@ -84,7 +85,14 @@ export default function BrowseCars() {
         ) : allCars.length > 0 ? (
           allCars.map((car, index) => <CarCard key={index} car={car} />)
         ) : (
-          <p className="text-center col-span-full text-gray-500">No cars found</p>
+          <div className="col-span-4 flex flex-col items-center justify-center py-16">
+            <div className="w-48 h-48">
+              <Lottie animationData={error} loop={true} />
+            </div>
+            <p className="text-center text-2xl font-semibold text-gray-500 mt-4">
+              No cars found
+            </p>
+          </div>
         )}
       </div>
     </div>

@@ -5,6 +5,7 @@ import WhyRentWithUs from "./WhyRentWithUs";
 import TopRatedCars from "./TopRatedCars";
 import Testimonials from './Testimonials'
 import CarBookingBar from "../../Components/CarBookingBar/CarBookingBar";
+import BrandLogo from "./BrandLogo";
 export default function Home() {
   return (
     <div>
@@ -27,6 +28,9 @@ export default function Home() {
       </div>
       <div>
         <Testimonials></Testimonials>
+      </div>
+      <div>
+        <BrandLogo></BrandLogo>
       </div>
     </div>
   )

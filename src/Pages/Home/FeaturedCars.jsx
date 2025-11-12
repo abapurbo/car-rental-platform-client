@@ -3,7 +3,8 @@ import CarCard from "../../Components/CarCard/CarCard";
 import useAxios from "../../Hooks/useAxios";
 import Spinner from '../../Components/Spinner/Spinner';
 import { Link } from "react-router";
-
+import error from '../../assets/Lottie/error.json'
+import Lottie from "lottie-react";
 export default function FeaturedCars() {
   const [latestCars, setLatestCars] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -72,9 +73,13 @@ export default function FeaturedCars() {
           ) : latestCars.length > 0 ? (
             latestCars.map((car, index) => <CarCard key={index} car={car} />)
           ) : (
-            <div className="col-span-4 flex h-[200px] justify-center items-center">
-              <p className="text-center  text-5xl col-span-full text-gray-500">No cars found</p>
-
+            <div className=" col-span-4 flex flex-col items-center justify-center py-16">
+              <div className="w-48 h-48">
+                <Lottie animationData={error} loop={true} />
+              </div>
+              <p className="text-center text-2xl font-semibold text-gray-500 mt-2">
+                No cars found
+              </p>
             </div>
           )}
         </div>
