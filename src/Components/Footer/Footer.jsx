@@ -17,7 +17,7 @@ export default function Footer() {
     <footer className="relative text-white">
       {/* Background Image + Overlay */}
       <div className="absolute bg-[url('https://i.ibb.co.com/pvGx1srq/01-LVN-34-Front-removebg-preview.png')] bg-no-repeat bg-center bg-size-[1200px_auto] inset-0 flex justify-center">
-        <div className="absolute inset-0 bg-linear-to-t from-black via-black to-black/25"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-black via-black to-black/50"></div>
       </div>
 
       <div className="relative py-12 px-6 md:px-16 overflow-hidden">

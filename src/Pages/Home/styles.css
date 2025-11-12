@@ -39,7 +39,15 @@ body {
 }
 
 
-.banner {
+.banner-1 {
     background:
         url('https://i.ibb.co.com/NgtRDZ0x/688812.jpg') no-repeat left 550px bottom 50px / 800px auto;
+}
+.banner-2 {
+    background:
+        url('https://i.ibb.co.com/wrKPsNtJ/rolls-royce-rolls-royce-phantom-vehicle-black-cars-wallpaper-preview.jpg') no-repeat left 550px bottom 50px / 800px auto;
+}
+.banner-3 {
+    background:
+        url('https://i.ibb.co.com/v6FjW3TS/360-F-481439096-Kv-EZWpy-WNr-E6-Ohbu0i-Qmv-NEBOd2-ALJFk.jpg') no-repeat left 550px bottom 50px / 800px auto;
 }
