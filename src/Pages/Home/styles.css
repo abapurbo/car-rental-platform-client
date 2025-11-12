@@ -56,5 +56,8 @@ body {
     .grid-layout{
       grid-template-columns:repeat(3,1fr);
     }
+    .rent-card{
+        padding:32px 15px
+    }
     
 }
