@@ -39,7 +39,7 @@ export default function BrowseCars() {
   }, [searchText, instance]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-100 via-white to-gray-100 pb-18">
+    <div className="min-h-screen bg-linear-to-b from-gray-100 via-white to-gray-100 pb-18">
       <div className="relative mb-18 pt-32 pb-20 h-[500px] overflow-hidden">
         <div className="absolute inset-0 flex justify-center items-center">
           <img
@@ -51,7 +51,7 @@ export default function BrowseCars() {
         </div>
 
         <div className="relative z-10 text-center px-4">
-          <h1 className="text-5xl font-bold noto-sans-georgian text-red-600 leading-tight mb-4 tracking-tight drop-shadow-lg">
+          <h1 className="md:text-4xl text-2xl font-bold noto-sans-georgian text-red-600 leading-tight mb-4 tracking-tight drop-shadow-lg">
             Browse <span className="text-white">Available Cars for Rent</span>
           </h1>
           <p className="text-white/90 italic text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
@@ -60,7 +60,7 @@ export default function BrowseCars() {
           </p>
 
           <div className="flex justify-center">
-            <div className="relative w-full max-w-lg">
+            <div className="relative md:w-[500px]">
               <FaSearch className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg" />
               <input
                 id="search"
@@ -68,7 +68,7 @@ export default function BrowseCars() {
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
                 placeholder="Search cars, brands or categories..."
-                className="w-full text-[18px] text-gray-900 bg-white border border-gray-300 rounded-full pl-12 pr-5 py-3 shadow-md
+                className="w-full md:text-[18px] text-gray-900 bg-white border border-gray-300 rounded-full pl-12 pr-5 py-3 shadow-md
                            focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500
                            transition duration-300 hover:shadow-[0_0_15px_rgba(255,0,0,0.3)]"
               />
@@ -77,7 +77,7 @@ export default function BrowseCars() {
         </div>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto px-10">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto md:px-10 px-6">
         {loading ? (
           <div className="flex justify-center items-center col-span-full">
             <Spinner />

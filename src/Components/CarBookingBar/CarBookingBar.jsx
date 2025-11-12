@@ -6,11 +6,11 @@ export default function CarBookingBar() {
     <div className="p-4 flex justify-center items-center z-30">
       <div className="w-full max-w-6xl bg-white rounded-2xl shadow-md flex flex-col md:flex-row items-center justify-between p-4 gap-3">
         {/* Pick-up Location */}
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col w-full md:w-auto flex-1">
           <label className="text-sm font-medium text-gray-700 mb-1">
             Pick-up Location
           </label>
-          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 bg-gray-50">
+          <div className="flex  items-center border border-gray-300 rounded-lg px-3 py-2 bg-gray-50">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 text-gray-400 mr-2"
@@ -40,11 +40,11 @@ export default function CarBookingBar() {
         </div>
 
         {/* Pick-up Date */}
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col md:w-auto  w-full flex-1">
           <label className="text-sm font-medium text-gray-700 mb-1">
             Pick-up Date
           </label>
-          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 bg-gray-50">
+          <div className="flex w-full items-center border border-gray-300 rounded-lg px-3 py-2 bg-gray-50">
             <input
               type="date"
               className="w-full bg-transparent outline-none text-gray-700"
@@ -68,7 +68,7 @@ export default function CarBookingBar() {
         </div>
 
         {/* Drop-off Location */}
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col md:w-auto w-full flex-1">
           <label className="text-sm font-medium text-gray-700 mb-1">
             Drop-off Location
           </label>
@@ -102,7 +102,7 @@ export default function CarBookingBar() {
         </div>
 
         {/* Drop-off Date */}
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col md:w-auto w-full flex-1">
           <label className="text-sm font-medium text-gray-700 mb-1">
             Drop-off Date
           </label>

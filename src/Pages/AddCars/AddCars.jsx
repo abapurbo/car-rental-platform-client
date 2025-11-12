@@ -57,23 +57,23 @@ export default function AddCar() {
   }
   return (
     <div className="min-h-screen pt-32 pb-18 flex justify-center items-center p-6  ">
-      <div className="w-full max-w-4xl p-8 rounded-[5px] bg-black/25 backdrop-blur-lg border border-white/20 shadow-xl">
+      <div className="w-full max-w-4xl md:p-8 pl-4 pr-4 py-5 rounded-[5px] bg-black/25 backdrop-blur-lg border border-white/20 shadow-xl">
         <Typography
-          variant="h4"
           textAlign="center"
           fontWeight={800}
           color="red"
           gutterBottom
+         
         >
-          Add a <span className="text-black">New Car</span>
+          <p className="md:text-4xl text-2xl">Add a <span className="text-black">New Car</span></p>
         </Typography>
 
-        <Typography textAlign="center" color="white" mb={6}>
+        <Typography textAlign="center" color="white">
           Fill in the details to list your car for rent
         </Typography>
 
         <form onSubmit={handleAddCar}>
-          <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6 md:mt-6 mt-4">
 
             {/* Car Name */}
             <TextField

@@ -9,17 +9,16 @@ import BrandLogo from "./BrandLogo";
 export default function Home() {
   return (
     <div >
-      {/* <div className="pt-18 bg-black z-20">
+      <div className="pt-18 bg-black z-20">
         <HeroBanner></HeroBanner>
-      </div> */}
-      {/* <div className="-mt-16">
+      </div>
+      <div className="-mt-16">
        <CarBookingBar></CarBookingBar>
-
-      </div> */}
+      </div>
       {/* features car section */}
-      {/* <div>
+      <div>
         <FeaturedCars></FeaturedCars>
-      </div> */}
+      </div>
       <div>
         <WhyRentWithUs></WhyRentWithUs>
       </div>

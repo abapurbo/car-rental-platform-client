@@ -15,7 +15,7 @@ import toast from "react-hot-toast";
 export default function CarDetails() {
   const [carDetails, setCarDetails] = useState({});
   const { id } = useParams();
-  const { user } = useAuth()
+  const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
@@ -39,29 +39,28 @@ export default function CarDetails() {
     axiosSecure.post(`/car-booking`, bookingCar)
       .then(res => {
         const data = res.data;
-        console.log(data)
         if (data.success) {
           toast.success(data.message);
-          setCarDetails({ ...carInfo, status: 'unavailable' })
+          setCarDetails({ ...carInfo, status: 'unavailable' });
         }
       })
       .catch(err => {
-        toast.error(err.response.data.message);
+        toast.error(err.response?.data?.message || "Booking failed");
       });
   };
 
   return (
-    <div className="min-h-screen pt-32  flex items-center justify-center pb-16 px-4">
+    <div className="min-h-screen pt-32 px-4 sm:px-6 lg:px-10 pb-16 flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-5xl   hover:border hover:border-red-300  hover:shadow-[0_4px_15px_rgba(255,0,0,0.2)] shadow-xl rounded-3xl overflow-hidden border border-gray-200"
+        className="w-full  max-w-5xl border border-gray-200 h-fit rounded-3xl shadow-xl overflow-hidden hover:shadow-[0_4px_15px_rgba(255,0,0,0.2)]"
       >
         {/* Top Section */}
         <div className="flex flex-col md:flex-row">
           {/* Image */}
-          <div className="md:w-1/2 h-72 md:h-auto">
+          <div className="md:w-1/2 h-64 md:h-auto">
             <img
               src={carDetails?.image}
               alt={carDetails?.car_name}
@@ -70,37 +69,32 @@ export default function CarDetails() {
           </div>
 
           {/* Car Info */}
-          <div className="md:w-1/2 p-8 flex flex-col justify-between">
+          <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-between">
             <div>
-              <div className="flex items-center justify-between">
-                <h2 className=" text-2xl font-bold text-black">
-                  {carDetails?.car_name}
-                </h2>
-
-              </div>
-              <p className="text-2xl text-gray-800 ">
+              <h2 className="text-xl sm:text-2xl font-bold text-black">
+                {carDetails?.car_name}
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-800 mt-1">
                 {carDetails?.category || "Premium Sedan"}
               </p>
-
-              <p className="text-gray-600 mt-6 leading-relaxed">
+              <p className="text-gray-600 mt-4 sm:mt-6 text-sm sm:text-base leading-relaxed">
                 {carDetails?.description ||
-                  "A perfect blend of performance, comfort, and luxury. Designed for those who appreciate fine engineering and modern aesthetics."}
+                  "A perfect blend of performance, comfort, and luxury."}
               </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <span className="px-4 py-2 bg-blue-50 text-blue-700 border border-blue-200 rounded-full font-medium flex items-center gap-2">
+            <div className="mt-6 flex flex-wrap gap-2 ">
+              <span className="px-3 py-1 bg-blue-50 text-blue-700 border border-blue-200 rounded-full flex items-center gap-1 text-sm sm:text-base">
                 <FaDollarSign /> ${carDetails?.rent_price}/day
               </span>
-              <span className="px-4 py-2 bg-green-50 border border-green-300 text-green-700 rounded-full font-medium flex items-center gap-2">
+              <span className="px-3 py-1 bg-green-50 border border-green-300 text-green-700 rounded-full flex items-center gap-1 text-sm sm:text-base">
                 <FaMapMarkerAlt /> {carDetails?.location}
               </span>
-              <span
-                className={`px-4 py-2 rounded-full font-medium ${carDetails?.status === "available"
+              <span className={`px-3 py-1 rounded-full font-medium text-sm sm:text-base ${
+                carDetails?.status === "available"
                   ? "bg-yellow-50 text-yellow-700 border border-yellow-700"
                   : "bg-red-100 border border-red-300 text-red-950"
-                  }`}
-              >
+              }`}>
                 {carDetails?.status}
               </span>
             </div>
@@ -108,65 +102,51 @@ export default function CarDetails() {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-gray-200 my-6 mx-10"></div>
+        <div className="h-px bg-gray-200 my-6 mx-4 md:mx-10"></div>
 
         {/* Bottom Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-10 pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3  md:grid-cols-2 gap-6 px-4 md:px-10 pb-10">
           {/* Vehicle Specs */}
-          <div className="col-span-2 bg-gray-50 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <div className="md:col-span-2 bg-gray-50 border border-gray-200 rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2">
               <FaCarSide className="text-red-600" /> Vehicle Specifications
             </h3>
-            <div className="grid grid-cols-2 gap-y-3 text-gray-700">
-              <p>
-                <span className="font-medium">Category:</span>{" "}
-                {carDetails?.category}
-              </p>
-              <p>
-                <span className="font-medium">Rent:</span> $
-                {carDetails?.rent_price}/day
-              </p>
-              <p>
-                <span className="font-medium">Location:</span>{" "}
-                {carDetails?.location}
-              </p>
-              <p>
-                <span className="font-medium">Status:</span>{" "}
-                {carDetails?.status}
-              </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 text-gray-700 text-sm sm:text-base">
+              <p><span className="font-medium">Category:</span> {carDetails?.category}</p>
+              <p><span className="font-medium">Rent:</span> ${carDetails?.rent_price}/day</p>
+              <p><span className="font-medium">Location:</span> {carDetails?.location}</p>
+              <p><span className="font-medium">Status:</span> {carDetails?.status}</p>
             </div>
           </div>
 
           {/* Provider */}
-          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <div className="bg-gray-50 md:col-span-2 lg:col-span-1 border border-gray-200 rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-all">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2">
               <FaUser className="text-red-600" /> Provider Details
             </h3>
-            <div className="text-gray-700 space-y-3">
-              <p>
-                <span className="font-medium">Name:</span>{" "}
-                {carDetails?.providerName}
-              </p>
+            <div className="text-gray-700 text-sm sm:text-base space-y-2">
+              <p><span className="font-medium">Name:</span> {carDetails?.providerName}</p>
               <p className="flex items-center gap-2">
-                <FaEnvelope className="text-red-600" />
-                {carDetails?.providerEmail}
+                <FaEnvelope className="text-red-600" /> {carDetails?.providerEmail}
               </p>
             </div>
           </div>
         </div>
 
         {/* CTA Section */}
-        <div className="bg-linear-to-r from-black/25 text-white flex flex-col sm:flex-row justify-between items-center px-10 py-6">
+        <div className="bg-black/10 flex flex-col sm:flex-row justify-between items-center px-6 md:px-10 py-4 sm:py-6 gap-4 sm:gap-0">
           <div>
-            <h3 className="text-2xl text-black font-semibold"><span className="text-red-600">Ready to rent</span> this car?</h3>
-            <p className="text-sm text-blue-600">
+            <h3 className="text-lg sm:text-2xl font-semibold text-black">
+              <span className="text-red-600">Ready to rent</span> this car?
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-700 mt-1">
               Fast booking. No hidden fees. 24/7 support.
             </p>
           </div>
           <motion.button
             onClick={() => handleCarBooking(carDetails)}
             whileHover={{ scale: 1.05 }}
-            className="mt-4 w-46 border hover:bg-red-500 hover:text-white border-red-400 sm:mt-0 px-10 py-3  text-red-600 font-semibold rounded-full hover:shadow-[0_4px_15px_rgba(255,0,0,0.2)]  transition-all"
+            className="mt-3 sm:mt-0 px-6 sm:px-10 py-2 sm:py-3 text-red-600 border border-red-400 rounded-full hover:bg-red-500 hover:text-white hover:shadow-[0_4px_15px_rgba(255,0,0,0.2)] transition-all"
           >
             Book Now
           </motion.button>

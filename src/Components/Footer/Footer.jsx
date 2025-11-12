@@ -26,7 +26,7 @@ export default function Footer() {
           
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <Link to="/" className="text-4xl font-bold text-red-600 tracking-wide">
+            <Link to="/" className="md:text-3xl text-2xl font-bold text-red-600 tracking-wide">
               Rent<span className="text-white">Wheels</span>
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed mt-3">
