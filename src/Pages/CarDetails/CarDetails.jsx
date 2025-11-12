@@ -9,18 +9,47 @@ import {
   FaEnvelope,
   FaUser,
 } from "react-icons/fa";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 export default function CarDetails() {
   const [carDetails, setCarDetails] = useState({});
   const { id } = useParams();
+  const { user } = useAuth()
   const axiosSecure = useAxiosSecure();
-   console.log(carDetails)
+
   useEffect(() => {
     axiosSecure.get(`/car-details/${id}`)
       .then((res) => {
         setCarDetails(res?.data);
       });
   }, [id]);
+
+  const handleCarBooking = (carInfo) => {
+    const bookingCar = {
+      car_id: carInfo?._id,
+      car_name: carInfo?.car_name,
+      rent_price: carInfo?.rent_price,
+      location: carInfo?.location,
+      user_name: user?.displayName,
+      user_email: user?.email,
+      image: user?.photoURL,
+    };
+
+    axiosSecure.post(`/car-booking`, bookingCar)
+      .then(res => {
+        const data = res.data;
+        console.log(data)
+        if (data.success) {
+          toast.success(data.message);
+          setCarDetails({ ...carInfo, status: 'unavailable' })
+        }
+      })
+      .catch(err => {
+        toast.error(err.response.data.message);
+      });
+  };
+
   return (
     <div className="min-h-screen pt-32  flex items-center justify-center pb-16 px-4">
       <motion.div
@@ -135,6 +164,7 @@ export default function CarDetails() {
             </p>
           </div>
           <motion.button
+            onClick={() => handleCarBooking(carDetails)}
             whileHover={{ scale: 1.05 }}
             className="mt-4 w-46 border hover:bg-red-500 hover:text-white border-red-400 sm:mt-0 px-10 py-3  text-red-600 font-semibold rounded-full hover:shadow-[0_4px_15px_rgba(255,0,0,0.2)]  transition-all"
           >

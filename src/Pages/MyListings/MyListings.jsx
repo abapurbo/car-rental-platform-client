@@ -5,89 +5,95 @@ import EditIcon from "@mui/icons-material/Edit";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
-import Spinner from '../../Components/Spinner/Spinner'
-import {
-  CardContent,
-  TextField,
-  InputAdornment,
-  Button,
-  Typography,
-  MenuItem,
-} from "@mui/material";
+import Spinner from "../../Components/Spinner/Spinner";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import CategoryIcon from "@mui/icons-material/Category";
 import DescriptionIcon from "@mui/icons-material/Description";
 import PaidIcon from "@mui/icons-material/Paid";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ImageIcon from "@mui/icons-material/Image";
+import PersonIcon from "@mui/icons-material/Person";
+import EmailIcon from "@mui/icons-material/Email";
 export default function MyListings() {
-  const [myCars, setMyCars] = useState([])
-  const modalRef = useRef(null)
-  const [updateForm, setUpdateForm] = useState({})
-  const [modalId, setModalId] = useState(null)
-  const { user } = useAuth()
-  const axiosSecure = useAxiosSecure()
+  const [myCars, setMyCars] = useState([]);
+  const modalRef = useRef(null);
+  const [updateForm, setUpdateForm] = useState({});
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    axiosSecure(`/my-listing-cars?email=${user?.email}`)
-      .then(result => {
-        setMyCars(result.data)
-      })
-  }, [user])
+    axiosSecure(`/my-listing-cars?email=${user?.email}`).then((result) => {
+      setMyCars(result.data);
+    });
+  }, [user]);
 
-  // form data
-  useEffect(() => {
-    if (modalId) {
-      axiosSecure.get(`/form-data/${modalId}`)
-        .then(result => {
-          setUpdateForm(result.data)
-          openModal()
-        })
-    }
-
-  }, [modalId])
-
-  //handle delete car 
+  //handle delete car
   const handleDeleteCar = (id) => {
-    console.log(id)
-    axiosSecure.delete(`/delete-car/${id}`)
-      .then(result => {
-        toast.success('Car deleted successfully');
-        setMyCars(prev => prev.filter(car => car._id !== id))
+    axiosSecure
+      .delete(`/delete-car/${id}`)
+      .then(() => {
+        toast.success("Car deleted successfully");
+        setMyCars((prev) => prev.filter((car) => car._id !== id));
       })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-
-  // handle modal close
-  const openModal = () => {
-    modalRef.current.showModal(); // open modal
+      .catch((err) => console.log(err));
   };
 
-  const closeModal = () => {
-    modalRef.current.close(); // close modal
+  // modal controls
+  const openModal = () => modalRef.current.showModal();
+  const closeModal = () => modalRef.current.close();
+
+  // handle update (optional: you can connect this to API)
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const updatedCar = {
+      car_name: form.car_name.value,
+      category: form.category.value,
+      description: form.description.value,
+      rent_price: form.rent_price.value,
+      location: form.location.value,
+      image: form.image.value,
+    }
+    axiosSecure
+      .patch(`/update-car/${updateForm._id}`, updatedCar)
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          toast.success("Car updated successfully!");
+          closeModal();
+          setMyCars((prev) =>
+            prev.map((car) =>
+              car._id === updateForm._id ? { ...car, ...updatedCar } : car
+            )
+          );
+        }
+        else{
+        toast.error('Car info not updated!')
+        closeModal()
+        }
+
+      })
+      .catch(() => toast.error("Failed to update car."));
   };
 
   return (
-    <div className="min-h-screen inter-font flex items-center justify-center px-4 pt-32 pb-20 ">
-
+    <div className="min-h-screen inter-font flex items-center justify-center px-4 pt-32 pb-20">
       <div className="w-full max-w-6xl bg-black/20 backdrop-blur-2xl border border-white/20 rounded-xs shadow-2xl p-10">
-
         {/* Header */}
-        {
-          myCars.length < 0 ? <div className="flex justify-center items-center">
-            <Spinner></Spinner>
-          </div> : <div className="flex justify-between items-center mb-8">
+        {myCars.length < 0 ? (
+          <div className="flex justify-center items-center">
+            <Spinner />
+          </div>
+        ) : (
+          <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-extrabold text-red-600 tracking-wide drop-shadow-[0_0_4px_rgba(255,75,75,0.4)]">
-              ({myCars.length})
-              My Car <span className="text-black">Listings</span>
+              ({myCars.length}) My Car{" "}
+              <span className="text-black">Listings</span>
             </h2>
             <button className="bg-red-600 hover:bg-red-700 active:scale-95 transition text-white font-semibold px-5 py-2 rounded-xl shadow-lg shadow-red-600/40">
               + Add New Car
             </button>
           </div>
-        }
+        )}
 
         {/* Table */}
         <div className="overflow-x-auto">
@@ -113,32 +119,31 @@ export default function MyListings() {
                     <img className="w-14 rounded-xs" src={car?.image} alt="" />
                     {car.car_name}
                   </td>
-
                   <td className="py-3 px-4 text-black/90">{car.category}</td>
-                  <td className="py-3 px-4 text-black/90 font-semibold">${car.rent_price}<small>/day</small></td>
+                  <td className="py-3 px-4 text-black/90 font-semibold">
+                    ${car.rent_price}
+                    <small>/day</small>
+                  </td>
                   <td className="py-3 px-4 text-black/90">{car.location}</td>
-
-                  {/* Status Badge */}
                   <td className="py-3 px-4">
                     <span
-                      className={`px-3 py-1 rounded-full text-[14px] font-bold    ${car.status === "available"
-                        ? " text-green-500 border border-green-500/30"
-                        : " text-red-600 border border-red-400/30"
+                      className={`px-3 py-1 rounded-full text-[14px] font-bold ${car.status === "available"
+                        ? "text-green-500 border border-green-500/30"
+                        : "text-red-600 border border-red-400/30"
                         }`}
                     >
                       {car.status}
                     </span>
                   </td>
-
-                  {/* Action Buttons */}
                   <td className="py-3 px-4 flex justify-center gap-3">
                     <IconButton
-                      onClick={() => setModalId(car?._id)}
-
+                      onClick={() => {
+                        setUpdateForm(car);
+                        openModal();
+                      }}
                       size="small"
                       title="Edit"
                       sx={{
-                        color: "r",
                         backgroundColor: "rgba(255,255,255,0.08)",
                         "&:hover": {
                           backgroundColor: "rgba(255,75,75,0.2)",
@@ -174,220 +179,166 @@ export default function MyListings() {
         </div>
       </div>
 
-      {/* update car info modal */}
+
+      {/* Tailwind Update Form Modal */}
       <dialog ref={modalRef} className="modal">
-        <div className="modal-box relative bg-gray-50 backdrop-blur-lg mt-22">
-          <button onClick={closeModal} className="text-black absolute right-6 top-4 rounded-full hover:text-red-600 text-xl">✕</button>
-          <h1 className="text-4xl text-red-600 font-bold text-center mt-5 mb-8">Update  <span className="text-black">Car</span> </h1>
-          <form method="dialog">
-            <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="modal-box relative bg-white shadow-xl rounded-xl p-8">
+          <button
+            onClick={closeModal}
+            className="absolute right-6 top-4 text-gray-500 hover:text-red-600 text-2xl"
+          >
+            ✕
+          </button>
 
-              {/* Car Name */}
-              <TextField
-                name="name"
-                defaultValue={updateForm?.car_name}
-                label="Car Name"
-                placeholder="Enter car name"
-                fullWidth
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <DirectionsCarIcon style={{ color: "red" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                variant="outlined"
-                sx={{
-                  "& .MuiOutlinedInput-input": { color: "black" },
-                  "& .MuiInputLabel-root": { color: "black" },
-                  "& .MuiOutlinedInput-root fieldset": { borderColor: "black" },
-                  "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
-                }}
-                required
-              />
+          <h1 className="text-3xl font-bold text-center text-red-600 mb-6">
+            Update <span className="text-black">Car</span>
+          </h1>
 
-              {/* Category */}
-              <TextField
-                select              
-                name="category"
-                label="Category"
-                defaultValue='Sedan'
-                fullWidth
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <CategoryIcon style={{ color: "red" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-input": { color: "black" },
-                  "& .MuiInputLabel-root": { color: "black" },
-                  "& .MuiOutlinedInput-root fieldset": { borderColor: "black" },
-                  "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
-                }}
-                required
-              >
-                <MenuItem value="Sedan">Sedan</MenuItem>
-                <MenuItem value="SUV">SUV</MenuItem>
-                <MenuItem value="Hatchback">Hatchback</MenuItem>
-                <MenuItem value="Luxury">Luxury</MenuItem>
-                <MenuItem value="Electric">Electric</MenuItem>
-              </TextField>
+          <form onSubmit={handleUpdate} className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-              {/* Description - full width */}
-              <TextField
-                name="description"
-                label="Description"
-                defaultValue={updateForm?.description}
-                placeholder="Write car description"
-                multiline
-                rows={1}
-                fullWidth
-                variant="outlined"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <DescriptionIcon style={{ color: "red" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-input": { color: "black" },
-                  "& .MuiInputLabel-root": { color: "black" },
-                  "& .MuiOutlinedInput-root fieldset": { borderColor: "black" },
-                  "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
-                }}
-                className="col-span-1 md:col-span-2"
-                required
-              />
+            {/* Car Name */}
+            <div>
+              <label className="block font-semibold text-gray-700 mb-1">Car Name</label>
+              <div className="flex items-center border border-gray-300 rounded-lg px-3 focus-within:ring-2 focus-within:ring-red-500">
+                <DirectionsCarIcon className="text-red-500 mr-2" />
+                <input
+                  type="text"
+                  name="car_name"
+                  defaultValue={updateForm?.car_name}
+                  required
+                  className="w-full py-2 bg-transparent text-black focus:outline-none"
+                />
+              </div>
+            </div>
 
+            {/* Category */}
+            <div>
+              <label className="block font-semibold text-gray-700 mb-1">Category</label>
+              <div className="flex items-center border border-gray-300 rounded-lg px-3 focus-within:ring-2 focus-within:ring-red-500">
+                <CategoryIcon className="text-red-500 mr-2" />
+                <select
+                  name="category"
+                  value={updateForm?.category || ""}
+                  onChange={(e) =>
+                    setUpdateForm((prev) => ({ ...prev, category: e.target.value }))
+                  }
+                  required
+                  className="w-full py-2 bg-transparent text-black focus:outline-none"
+                >
+                  <option value="" disabled>
+                    Select Category
+                  </option>
+                  <option value="Sedan">Sedan</option>
+                  <option value="SUV">SUV</option>
+                  <option value="Hatchback">Hatchback</option>
+                  <option value="Luxury">Luxury</option>
+                  <option value="Electric">Electric</option>
+                </select>
+              </div>
+            </div>
 
-              {/* Rent Price */}
-              <TextField
-                name="price"
-                defaultValue={updateForm?.rent_price}
-                label="Rent Price (Per Day)"
-                placeholder="Enter rent price"
-                type="number"
-                fullWidth
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <PaidIcon style={{ color: "red" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-input": { color: "black" },
-                  "& .MuiInputLabel-root": { color: "black" },
-                  "& .MuiOutlinedInput-root fieldset": { borderColor: "black" },
-                  "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
-                }}
-                required
-              />
+            {/* Description */}
+            <div className="md:col-span-2">
+              <label className="block font-semibold text-gray-700 mb-1">Description</label>
+              <div className="flex items-start border border-gray-300 rounded-lg px-3 focus-within:ring-2 focus-within:ring-red-500">
+                <DescriptionIcon className="text-red-500 mt-2 mr-2" />
+                <textarea
+                  name="description"
+                  defaultValue={updateForm?.description}
+                  rows="2"
+                  required
+                  className="w-full py-2 bg-transparent text-black focus:outline-none"
+                ></textarea>
+              </div>
+            </div>
 
-              {/* Location */}
-              <TextField
-                name="location"
-                label="Location"
-                defaultValue={updateForm?.location}
-                placeholder="Enter location"
-                fullWidth
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <LocationOnIcon style={{ color: "red" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-input": { color: "black" },
-                  "& .MuiInputLabel-root": { color: "black" },
-                  "& .MuiOutlinedInput-root fieldset": { borderColor: "black" },
-                  "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
-                }}
-                required
-              />
+            {/* Rent Price */}
+            <div>
+              <label className="block font-semibold text-gray-700 mb-1">
+                Rent Price (Per Day)
+              </label>
+              <div className="flex items-center border border-gray-300 rounded-lg px-3 focus-within:ring-2 focus-within:ring-red-500">
+                <PaidIcon className="text-red-500 mr-2" />
+                <input
+                  type="number"
+                  name="rent_price"
+                  defaultValue={updateForm?.rent_price}
+                  required
+                  className="w-full py-2 bg-transparent text-black focus:outline-none"
+                />
+              </div>
+            </div>
 
-              {/* Image URL - full width */}
-              <TextField
-                name="image"
-                label="Image URL"
-                defaultValue={updateForm?.image}
-                placeholder="Enter image URL"
-                type="url"
-                fullWidth
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <ImageIcon style={{ color: "red" }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-input": { color: "black" },
-                  "& .MuiInputLabel-root": { color: "black" },
-                  "& .MuiOutlinedInput-root fieldset": { borderColor: "black" },
-                  "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
-                }}
-                className="col-span-1 md:col-span-2"
-                required
-              />
+            {/* Location */}
+            <div>
+              <label className="block font-semibold text-gray-700 mb-1">Location</label>
+              <div className="flex items-center border border-gray-300 rounded-lg px-3 focus-within:ring-2 focus-within:ring-red-500">
+                <LocationOnIcon className="text-red-500 mr-2" />
+                <input
+                  type="text"
+                  name="location"
+                  defaultValue={updateForm?.location}
+                  required
+                  className="w-full py-2 bg-transparent text-black focus:outline-none"
+                />
+              </div>
+            </div>
 
-              {/* Provider Name */}
-              <TextField
-                name="providerName"
-                label="Provider Name"
-                value={user?.displayName}
-                fullWidth
-                InputProps={{ readOnly: true }}
-                sx={{
-                  "& .MuiOutlinedInput-input": { color: "black" },
-                  "& .MuiInputLabel-root": { color: "black" },
-                  "& .MuiOutlinedInput-root fieldset": { borderColor: "black" },
-                  "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
-                }}
-                required
-              />
+            {/* Image URL */}
+            <div className="md:col-span-2">
+              <label className="block font-semibold text-gray-700 mb-1">Image URL</label>
+              <div className="flex items-center border border-gray-300 rounded-lg px-3 focus-within:ring-2 focus-within:ring-red-500">
+                <ImageIcon className="text-red-500 mr-2" />
+                <input
+                  type="url"
+                  name="image"
+                  defaultValue={updateForm?.image}
+                  required
+                  className="w-full py-2 bg-transparent text-black focus:outline-none"
+                />
+              </div>
+            </div>
 
-              {/* Provider Email */}
-              <TextField
-                name="providerEmail"
-                label="Provider Email"
-                value={user?.email}
-                fullWidth
-                InputProps={{ readOnly: true }}
-                sx={{
-                  "& .MuiOutlinedInput-input": { color: "black" },
-                  "& .MuiInputLabel-root": { color: "black" },
-                  "& .MuiOutlinedInput-root fieldset": { borderColor: "black" },
-                  "& .MuiOutlinedInput-root:hover fieldset": { borderColor: "#ff6b6b" },
-                }}
-                required
-              />
+            {/* Provider Info */}
+            <div>
+              <label className="block font-semibold text-gray-700 mb-1">Provider Name</label>
+              <div className="flex items-center border border-gray-200 rounded-lg px-3 bg-gray-100">
+                <PersonIcon className="text-gray-400 mr-2" />
+                <input
+                  type="text"
+                  value={user?.displayName || ""}
+                  readOnly
+                  className="w-full py-2 bg-transparent text-gray-600 focus:outline-none"
+                />
+              </div>
+            </div>
 
-              {/* Button - full width */}
-              <Button
+            <div>
+              <label className="block font-semibold text-gray-700 mb-1">Provider Email</label>
+              <div className="flex items-center border border-gray-200 rounded-lg px-3 bg-gray-100">
+                <EmailIcon className="text-gray-400 mr-2" />
+                <input
+                  type="email"
+                  value={user?.email || ""}
+                  readOnly
+                  className="w-full py-2 bg-transparent text-gray-600 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <div className="md:col-span-2">
+              <button
                 type="submit"
-                variant="contained"
-                fullWidth
-                sx={{
-                  paddingY: 1.5,
-                  backgroundColor: "red",
-                  fontWeight: 600,
-                  borderRadius: 2,
-                  "&:hover": { backgroundColor: "#c60000" },
-                }}
-                className="col-span-1 md:col-span-2 mt-2"
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition"
               >
-                Add Car
-              </Button>
-            </CardContent>
+                Update Car
+              </button>
+            </div>
           </form>
-
         </div>
       </dialog>
+
     </div>
   );
 }

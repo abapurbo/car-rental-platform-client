@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import useAxios from "../../Hooks/useAxios";
 import CarCard from "../../Components/CarCard/CarCard";
+import Spinner from "../../Components/Spinner/Spinner";
 
 export default function BrowseCars() {
   const [allCars, setAllCars] = useState([])
@@ -60,7 +61,11 @@ export default function BrowseCars() {
 
       {/* Cars Grid */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto px-10">
-        {allCars.map((car, index) => <CarCard key={index} car={car}></CarCard>)}
+        {
+          allCars.length > 0 ? allCars.map((car, index) => <CarCard key={index} car={car}></CarCard>) : <div className="flex justify-center items-center">
+            <Spinner></Spinner>
+          </div>
+        }
       </div>
     </div>
   );
