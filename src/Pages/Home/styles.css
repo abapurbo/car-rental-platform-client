@@ -43,21 +43,57 @@ body {
     background:
         url('https://i.ibb.co.com/NgtRDZ0x/688812.jpg') no-repeat left 550px bottom 50px / 800px auto;
 }
+
 .banner-2 {
     background:
         url('https://i.ibb.co.com/wrKPsNtJ/rolls-royce-rolls-royce-phantom-vehicle-black-cars-wallpaper-preview.jpg') no-repeat left 550px bottom 50px / 800px auto;
 }
+
 .banner-3 {
     background:
         url('https://i.ibb.co.com/v6FjW3TS/360-F-481439096-Kv-EZWpy-WNr-E6-Ohbu0i-Qmv-NEBOd2-ALJFk.jpg') no-repeat left 550px bottom 50px / 800px auto;
 }
 
-@media screen and (min-width:1032px) and (max-width:1376px) {
-    .grid-layout{
-      grid-template-columns:repeat(3,1fr);
+/* banner responsive */
+@media screen and (max-width:915px) {
+
+    .banner-1,
+    .banner-2,
+    .banner-3 {
+       flex-direction:column;
+       justify-content:center;
+
+        background-position:top;
+        background-size:contain;
+       
+        
     }
-    .rent-card{
-        padding:32px 15px
+    .hero-title{
+        font-size:30px;
     }
+  
+    .swiper-slide{
+        height:960px
+    }
+    .swiper-pagination {
+    bottom: 160px !important;
+    /* joto icha height diba */
+}
+
     
+}
+
+
+
+
+
+@media screen and (min-width:1032px) and (max-width:1376px) {
+    .grid-layout {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .rent-card {
+        padding: 32px 15px
+    }
+
 }

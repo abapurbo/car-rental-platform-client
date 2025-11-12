@@ -22,30 +22,30 @@ export default function HeroBanner() {
           dynamicBullets: true,
           clickable: true,
         }}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 4000,
+        //   disableOnInteraction: false,
+        // }}
 
         modules={[Pagination, Autoplay, Navigation]}
         className="mySwiper"
       >
         <SwiperSlide>
           <div className='w-full h-full inter-font'>
-            <div className="banner-1 container mx-auto w-full p-10 h-full">
+            <div className="banner-1  container flex lg:flex-row  justify-start mx-auto  p-10 h-full">
 
-              <div className="w-full mt-8 flex flex-col  ">
+              <div className="banner-content  md:mt-8  flex flex-col  ">
                 <div>
-                  <h1 className="text-white noto-sans-georgian font-extrabold text-5xl text-start leading-tight">
-                    <span>Looking To Save More</span><br />
+                  <h1 className="hero-title text-white noto-sans-georgian font-extrabold lg:text-5xl  md:text-start text-center leading-tight">
+                    <span>Looking To Save More </span><br className='hidden lg:block'/>
                     On Your <span className="bg-red-600 text-white transform -skew-x-12 inline-block px-2">Rental Car?</span>
                   </h1>
-                  <p className="text-xl  italic text-start text-white mt-6">
-                    We Provide The Best Car Options And Expert Services For<br />
+                  <p className="text-xl  italic md:text-start text-center text-white mt-6">
+                    We Provide The Best Car Options And Expert Services For<br className='hidden lg:block'/>
                     The Greatest Customer Experience
                   </p>
                 </div>
-                <div className='flex flex-col mt-10 items-start'>
+                <div className='flex flex-col md:mt-10 mt-8 md:items-start items-center'>
                   <h1 className='text-[15px] text-white font-semibold'>BMW M6 Competition</h1>
                   <p className='text-2xl font-bold text-red-600'>$1178.90<small className='text-white font-semibold'>/day</small></p>
                   <div className='flex justify-around items-center border-t-2 mt-3 border-l-2 border-r-2 rounded-full border-gray-500 w-70 h-13'>
@@ -74,22 +74,22 @@ export default function HeroBanner() {
         </SwiperSlide>
         <SwiperSlide>
           <div className='w-full h-full inter-font'>
-            <div className="banner-2 container mx-auto w-full p-10 h-full">
+            <div className="banner-2 flex flex-row justify-start container mx-auto w-full md:p-10 p-6 h-full">
 
-              <div className="w-full mt-8 flex flex-col">
+              <div className="banner-content md:mt-10   flex flex-col">
                 <div>
-                  <h1 className="text-white noto-sans-georgian font-extrabold text-5xl text-start leading-tight">
-                    <span>Experience Ultimate Luxury</span><br />
-                    Rolls-Royce <span>With Us</span>
+                  <h1 className="hero-title lg:text-start text-center text-white noto-sans-georgian font-extrabold text-5xl  leading-tight">
+                    <span>Experience Ultimate Luxury</span><br className='hidden md:block' />
+                    <span> Rolls-Royce With Us</span>
                   </h1>
 
-                  <p className="text-xl italic text-start text-white mt-6">
+                  <p className="text-xl italic md:text-start text-center text-white mt-6">
                     Travel in unmatched comfort and timeless elegance. Premium cars,<br />
                     white-glove service — book your luxury ride today.
                   </p>
                 </div>
 
-                <div className="flex flex-col mt-10 items-start">
+                <div className="flex flex-col md:mt-10 mt-8 md:items-start items-center">
                   <h2 className="text-[15px] text-white font-semibold">Rolls-Royce Phantom</h2>
 
                   <p className="text-2xl font-bold text-red-600">
@@ -136,22 +136,22 @@ export default function HeroBanner() {
         </SwiperSlide>
         <SwiperSlide>
           <div className='w-full h-full inter-font'>
-            <div className="banner-3 container mx-auto w-full p-10 h-full">
+            <div className="banner-3 container mx-auto flex flex-row justify-start w-full md:p-10 p-4 h-full">
 
-              <div className="w-full mt-8 flex flex-col">
+              <div className="banner-content md:mt-10  flex flex-col">
                 <div>
-                  <h1 className="text-white noto-sans-georgian font-extrabold text-5xl text-start leading-tight">
-                    <span>Drive the Luxury You Deserve</span><br />
+                  <h1 className="hero-title text-white noto-sans-georgian font-extrabold text-5xl md:text-start text-center leading-tight">
+                    <span>Drive the Luxury You Deserve</span><br className='hidden lg:block'/>
                     <span>Experience Mercedes Excellence</span>
                   </h1>
 
-                  <p className="text-xl italic text-start text-white mt-6">
+                  <p className="text-xl italic md:text-start text-center text-white px-6 mt-6">
                     Discover unmatched comfort, performance, and prestige.<br />
                     Rent your dream Mercedes and redefine your driving experience.
                   </p>
                 </div>
 
-                <div className="flex flex-col mt-10 items-start">
+                <div className="flex flex-col md:mt-10 mt-8 md:items-start items-center">
                   <h2 className="text-[15px] text-white font-semibold">Mercedes-Benz S-Class</h2>
                   <p className="text-2xl font-bold text-red-600">
                     $1,250.00 <small className="text-white font-semibold">/day</small>

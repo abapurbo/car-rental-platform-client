@@ -12,7 +12,7 @@ export default function Home() {
       <div className="pt-18 bg-black z-20">
         <HeroBanner></HeroBanner>
       </div>
-      <div className="-mt-16">
+      <div className="md:-mt-16 -mt-38">
        <CarBookingBar></CarBookingBar>
       </div>
       {/* features car section */}
