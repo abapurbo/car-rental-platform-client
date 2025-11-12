@@ -41,13 +41,13 @@ export default function MyBookings() {
   // ];
 
   return (
-    <div className="min-h-screen bg-black/15 pt-32 pb-20 px-6 flex flex-col items-center">
+    <div className="min-h-screen bg-black/15 pt-36 pb-14  px-6 flex flex-col items-center">
       <h1 className="text-4xl font-bold text-red-600 mb-10">
         My <span className="text-black">Bookings</span>
       </h1>
 
       {/* Booking Cards */}
-      <div className="flex flex-col gap-8 w-full max-w-6xl">
+      <div className="flex flex-col  gap-6 w-full max-w-6xl">
         {loading ? <div className="flex items-center justify-center">
 
           <Spinner></Spinner>

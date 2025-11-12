@@ -1,50 +1,92 @@
 import React, { useEffect, useState } from "react";
 import CarCard from "../../Components/CarCard/CarCard";
 import useAxios from "../../Hooks/useAxios";
-import Spinner from '../../Components/Spinner/Spinner'
+import Spinner from '../../Components/Spinner/Spinner';
 import { Link } from "react-router";
+
 export default function FeaturedCars() {
   const [latestCars, setLatestCars] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [searchText, setSearchText] = useState("");
   const instance = useAxios();
 
+  // Initial fetch
   useEffect(() => {
-    instance.get("/latest-cars").then((result) => {
-      setLatestCars(result?.data);
-    });
+    setLoading(true);
+    instance.get("/latest-cars")
+      .then((res) => {
+        setLatestCars(res.data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, []);
 
+  // Search debounce
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setLoading(true);
+      const endpoint = searchText.trim() === "" ? "/latest-cars" : `/cars?search=${searchText}`;
+      instance.get(endpoint)
+        .then((res) => {
+          setLatestCars(res.data);
+          setLoading(false);
+        })
+        .catch(() => setLoading(false));
+    }, 500); // 500ms debounce
+
+    return () => clearTimeout(handler);
+  }, [searchText, instance]);
+
   return (
-    <section className="pt-20 px-6 lg:px-12 ">
+    <section className="pt-20 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl  font-bold text-black ">
+        <div className="text-center mb-14">
+          <h2 className="text-4xl font-bold text-black">
             Explore Our <span className="text-red-600">Featured Cars</span>
           </h2>
           <p className="text-gray-600 mt-4 text-lg md:text-xl max-w-2xl mx-auto">
             Handpicked premium cars — newest arrivals ready for your next journey.
           </p>
-          {/* Decorative underline */}
           <div className="w-28 h-1 bg-red-600 mt-6 mx-auto rounded-full"></div>
+        </div>
+
+        {/* Search Bar */}
+        <div className="flex justify-center mb-10">
+          <input
+            type="text"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            placeholder="Search cars by name or brand..."
+            className="w-full max-w-lg text-gray-900 bg-white border border-gray-300 rounded-full pl-5 pr-5 py-3 shadow-md
+                       focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-300"
+          />
         </div>
 
         {/* Car Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {latestCars.length > 0 ? (
+          {loading ? (
+            <div className="flex justify-center items-center col-span-full">
+              <Spinner />
+            </div>
+          ) : latestCars.length > 0 ? (
             latestCars.map((car, index) => <CarCard key={index} car={car} />)
           ) : (
-            <div className="flex justify-center items-center col-span-4">
-              <Spinner></Spinner>
+            <div className="col-span-4 flex h-[200px] justify-center items-center">
+              <p className="text-center  text-5xl col-span-full text-gray-500">No cars found</p>
+
             </div>
           )}
         </div>
 
         {/* View All Button */}
-        <div className="flex justify-center mt-12">
-          <Link to='/browse-cars' className="bg-red-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-red-700 transition-all shadow-lg">
-            View All Cars
-          </Link>
-        </div>
+        {
+          latestCars.length > 0 && <div className="flex justify-center mt-12">
+            <Link to='/browse-cars' className="bg-red-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-red-700 transition-all shadow-lg">
+              View All Cars
+            </Link>
+          </div>
+        }
       </div>
     </section>
   );
