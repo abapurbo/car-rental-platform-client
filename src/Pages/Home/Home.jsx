@@ -23,9 +23,9 @@ export default function Home() {
       {/* <div>
         <WhyRentWithUs></WhyRentWithUs>
       </div> */}
-      {/* <div>
+      <div>
         <TopRatedCars></TopRatedCars>
-      </div> */}
+      </div>
       <div>
         <Testimonials></Testimonials>
       </div>
