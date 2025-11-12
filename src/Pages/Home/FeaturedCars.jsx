@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CarCard from "../../Components/CarCard/CarCard";
 import useAxios from "../../Hooks/useAxios";
 import Spinner from '../../Components/Spinner/Spinner'
+import { Link } from "react-router";
 export default function FeaturedCars() {
   const [latestCars, setLatestCars] = useState([]);
   const instance = useAxios();
@@ -40,9 +41,9 @@ export default function FeaturedCars() {
 
         {/* View All Button */}
         <div className="flex justify-center mt-12">
-          <button className="bg-red-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-red-700 transition-all shadow-lg">
+          <Link to='/browse-cars' className="bg-red-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-red-700 transition-all shadow-lg">
             View All Cars
-          </button>
+          </Link>
         </div>
       </div>
     </section>
