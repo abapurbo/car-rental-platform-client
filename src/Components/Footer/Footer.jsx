@@ -20,9 +20,9 @@ export default function Footer() {
         <div className="absolute inset-0 bg-linear-to-t from-black via-black to-black/50"></div>
       </div>
 
-      <div className="relative py-12 px-6 md:px-16 overflow-hidden">
+      <div className="relative py-12 px-6 md:px-10 overflow-hidden">
         {/* Footer Content */}
-        <div className="relative grid grid-cols-1 md:grid-cols-5 gap-10 max-w-7xl mx-auto z-10">
+        <div className="relative grid grid-cols-1 md:grid-cols-5 gap-8 max-w-7xl mx-auto z-10">
           
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
@@ -66,7 +66,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <h3 className="lg:text-lg md:text-[15px] text-lg font-semibold lg:mb-4 md:mb-3 mb-4 flex items-center gap-2">
               <FaLink className="text-red-500" /> Quick Links
             </h3>
             <ul className="space-y-2 text-gray-400 text-sm">
@@ -81,7 +81,7 @@ export default function Footer() {
 
           {/* Rental Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <h3 className="lg:text-lg md:text-[15px] text-lg font-semibold lg:mb-4 md:mb-3 mb-4 flex items-center gap-2">
               <FaCarSide className="text-red-500" /> Rental Services
             </h3>
             <ul className="space-y-2 text-gray-400 text-sm">
@@ -95,7 +95,7 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <h3 className="lg:text-lg md:text-[15px] text-lg  font-semibold lg:mb-4 md:mb-3 mb-4 flex items-center gap-2">
               <FaRegNewspaper className="text-red-500" /> Newsletter
             </h3>
             <p className="text-gray-400 text-sm mb-3">
@@ -117,7 +117,7 @@ export default function Footer() {
             </label>
 
             <div className="text-gray-400 text-xs mt-4">
-              By subscribing, you agree to our{" "}
+              By subscribing, you agree to our<br />
               <Link to="/terms" className="text-red-500 hover:underline">
                 Terms & Conditions
               </Link>

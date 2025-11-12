@@ -8,28 +8,28 @@ import CarBookingBar from "../../Components/CarBookingBar/CarBookingBar";
 import BrandLogo from "./BrandLogo";
 export default function Home() {
   return (
-    <div>
-      <div className="pt-18 bg-black z-20">
+    <div >
+      {/* <div className="pt-18 bg-black z-20">
         <HeroBanner></HeroBanner>
-      </div>
-      <div className="-mt-16">
+      </div> */}
+      {/* <div className="-mt-16">
        <CarBookingBar></CarBookingBar>
 
-      </div>
+      </div> */}
       {/* features car section */}
-      <div>
+      {/* <div>
         <FeaturedCars></FeaturedCars>
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <WhyRentWithUs></WhyRentWithUs>
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <TopRatedCars></TopRatedCars>
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <Testimonials></Testimonials>
-      </div>
-      <div>
+      </div> */}
+      <div >
         <BrandLogo></BrandLogo>
       </div>
     </div>

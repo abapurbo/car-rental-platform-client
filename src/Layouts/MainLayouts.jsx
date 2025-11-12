@@ -15,9 +15,9 @@ export default function MainLayouts() {
   }, [location]);
   return (
     <div >
-      <div className="inter-font">
+      {/* <div className="inter-font">
         <Navbar></Navbar>
-      </div>
+      </div> */}
       {/* main contain */}
       <div className="relative z-20">
         {
