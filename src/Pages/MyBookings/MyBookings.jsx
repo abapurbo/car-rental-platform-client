@@ -23,7 +23,7 @@ export default function MyBookings() {
         console.error("Error fetching bookings:", err);
       })
       .finally(() => setLoading(false));
-  }, [axiosSecure,user]);
+  }, [axiosSecure,user?.email]);
 
   return (
     <div className="min-h-screen bg-black/15 pt-36 pb-14 px-6 flex flex-col items-center">

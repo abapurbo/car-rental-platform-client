@@ -1,6 +1,9 @@
 # 🚗 RentWheels – Car Rental Platform 
----
 
+## 🔗 Live Demo  
+[🔴 Click Here to Visit Live Site](https://car-rental-platform.pages.dev/)  
+
+---
 ## 📘 Project Overview
 
 **RentWheels** is a modern, full-stack **MERN (MongoDB, Express.js, React.js, Node.js)** car rental web application that connects customers with local car owners or rental providers.  
@@ -130,7 +133,7 @@ The app ensures a smooth, secure, and responsive experience with real-time booki
 - Node.js  
 - Express.js  
 - MongoDB (Mongoose)  
-- JWT / Firebase Admin SDK *(optional for secure APIs)*  
+- Firebase Admin SDK 
 - CORS  
 
 ### **Hosting:**
@@ -139,7 +142,11 @@ The app ensures a smooth, secure, and responsive experience with real-time booki
 
 ---
 
-## ⚙️ Installation & Setup
+## My project repo and live link 
+- [🔴 Client-side Github repo link](https://github.com/abapurbo/car-rental-platform-client)
+- [🔴 Server-side Github repo link](http://github.com/abapurbo/car-rental-server)
+- [🔴 Live-client-side Site](https://car-rental-platform.pages.dev/)
+- [🔴 Live-server-side Site](Live Website Link Server-side)
 
-### 🖥️ Client Setup
+---
 
