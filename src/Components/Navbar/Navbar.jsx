@@ -126,7 +126,7 @@ export default function Navbar() {
               </div>
               <ul
                 tabIndex={-1}
-                className={`menu menu-sm dropdown-content ${location.pathname == '/' || location.pathname == '/browse-cars'?'bg-white/10':'bg-black/50'} backdrop-blur-xl shadow-[0_4px_15px_rgba(255,0,0,0.2)] border-red-600 text-white rounded-2xl  mt-3 w-60 p-4 z-20  animate-[fadeIn_0.2s_ease-out]`}
+                className={`menu menu-sm dropdown-content ${location.pathname == '/' || location.pathname == '/browse-cars' ? 'bg-white/10' : 'bg-black/50'} backdrop-blur-xl shadow-[0_4px_15px_rgba(255,0,0,0.2)] border-red-600 text-white rounded-2xl  mt-3 w-60 p-4 z-20  animate-[fadeIn_0.2s_ease-out]`}
               >
 
                 {/* User Info */}
@@ -157,17 +157,29 @@ export default function Navbar() {
             </div>
           ) :
             <div className="flex gap-4">
-              <NavLink
-                to='/login'
-                className={({ isActive }) =>
-                  `px-4 py-2 rounded-full border-1  border-red-600 text-[15px] font-semibold transition ${isActive
-                    ? "bg-red-600 text-white"
-                    : "text-white hover:bg-red-600 hover:shadow-[10px_10px_30px_rgba(255,0,0,0.3)] hover:text-white"
-                  }`
-                }
-              >
-                Login
-              </NavLink>
+              {
+                location.pathname === '/signUp' ? <NavLink
+                  to='/signUp'
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-full border-1  border-red-600 text-[15px] font-semibold transition ${isActive
+                      ? "bg-red-600 text-white"
+                      : "text-white hover:bg-red-600 hover:shadow-[10px_10px_30px_rgba(255,0,0,0.3)] hover:text-white"
+                    }`
+                  }
+                >
+                  Sign Up
+                </NavLink> : <NavLink
+                  to='/login'
+                  className={({ isActive }) =>
+                    `px-4 py-2 rounded-full border-1  border-red-600 text-[15px] font-semibold transition ${isActive
+                      ? "bg-red-600 text-white"
+                      : "text-white hover:bg-red-600 hover:shadow-[10px_10px_30px_rgba(255,0,0,0.3)] hover:text-white"
+                    }`
+                  }
+                >
+                  Login
+                </NavLink>
+              }
             </div>
           }
         </div>
