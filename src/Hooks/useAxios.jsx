@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 const instance=axios.create({
-    baseURL:'http://localhost:4000'
+    baseURL:'https://car-rental-server-six-xi.vercel.app'
 })
 
 export default function useAxios() {
