@@ -146,7 +146,7 @@ The app ensures a smooth, secure, and responsive experience with real-time booki
 - [🔴 Client-side Github repo link](https://github.com/abapurbo/car-rental-platform-client)
 - [🔴 Server-side Github repo link](http://github.com/abapurbo/car-rental-server)
 - [🔴 Live-client-side Site](https://car-rental-platform.pages.dev/)
-- [🔴 Live-server-side Site](Live Website Link Server-side)
+- [🔴 Live-server-side Site](https://car-rental-server-six-xi.vercel.app/)
 
 ---
 
