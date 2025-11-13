@@ -22,10 +22,10 @@ export default function HeroBanner() {
           dynamicBullets: true,
           clickable: true,
         }}
-        // autoplay={{
-        //   delay: 4000,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
 
         modules={[Pagination, Autoplay, Navigation]}
         className="mySwiper"
