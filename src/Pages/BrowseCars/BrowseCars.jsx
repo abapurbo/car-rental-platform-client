@@ -24,7 +24,6 @@ export default function BrowseCars() {
       })
       .catch(() => {
         setLoading(false)
-        setAllCars([])
       });
   }, []);
 
@@ -42,7 +41,6 @@ export default function BrowseCars() {
         })
         .catch(() => {
           setLoading(false)
-          setAllCars([])
         });
     }, 500);
 
