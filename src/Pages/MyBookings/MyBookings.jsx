@@ -27,6 +27,9 @@ export default function MyBookings() {
 
   return (
     <div className="min-h-screen bg-black/15 pt-36 pb-14 px-6 flex flex-col items-center">
+      <title>
+        car-rental-platform-client || My Booking
+      </title>
       <h1 className="text-4xl font-bold text-red-600 mb-10">
         My <span className="text-black">Bookings</span>
       </h1>
@@ -41,14 +44,14 @@ export default function MyBookings() {
           bookings.map((booking, idx) => (
             <div
               key={idx}
-              className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-gradient-to-br from-white/90 to-white/60 backdrop-blur-2xl border border-gray-200 rounded-2xl shadow-md hover:shadow-red-400/30 transition-all duration-300 p-6"
+              className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-gradient-to-br from-white/90 to-white/60 backdrop-blur-2xl border border-gray-200 rounded-2xl shadow-md hover:shadow-red-400/30 transition-all duration-300 md:p-6 p-4"
             >
               {/* Left Section - Image + Name */}
-              <div className="flex items-center gap-5">
+              <div className="flex items-center md:gap-5 gap-3">
                 <img
                   src={booking.image}
                   alt={booking.car_name}
-                  className="w-24 h-24 object-contain rounded-xl border border-gray-300 shadow-sm"
+                  className="w-20 h-20 object-contain rounded-xl border border-gray-300 shadow-sm"
                 />
                 <div>
                   <h2 className="text-2xl font-bold text-red-600 mb-1 tracking-tight">

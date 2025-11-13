@@ -10,7 +10,9 @@ export default function Home() {
   return (
     <div >
       <div className="pt-18 bg-black z-20">
-        <HeroBanner></HeroBanner>
+        <div className="container mx-auto px-3">
+          <HeroBanner></HeroBanner>
+        </div>
       </div>
       <div className="md:-mt-16 -mt-38">
        <CarBookingBar></CarBookingBar>

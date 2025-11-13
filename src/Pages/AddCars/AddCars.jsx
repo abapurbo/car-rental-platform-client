@@ -57,6 +57,9 @@ export default function AddCar() {
   }
   return (
     <div className="min-h-screen pt-32 pb-18 flex justify-center items-center p-6  ">
+     <title>
+      car-rental-platform-client || AddCar
+     </title>
       <div className="w-full max-w-4xl md:p-8 pl-4 pr-4 py-5 rounded-[5px] bg-black/25 backdrop-blur-lg border border-white/20 shadow-xl">
         <Typography
           textAlign="center"

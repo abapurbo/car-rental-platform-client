@@ -83,6 +83,9 @@ export default function MyListings() {
 
   return (
     <div className=" min-h-screen flex justify-center items-center inter-font pt-34 pb-20">
+     <title>
+      car-rental-platform-client || My Listings
+     </title>
       <div className="container mx-auto  md:px-10 px-6">
         <div className="bg-black/20   backdrop-blur-2xl h-full border border-white/20 rounded-xl shadow-2xl p-5 sm:p-8 md:p-10 w-full max-w-6xl mx-auto">
           {/* Header */}

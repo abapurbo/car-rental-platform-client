@@ -64,6 +64,9 @@ export default function SignUp() {
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-32 pb-18 ">
+      <title>
+        car-rental-platform-client || Sign Up
+      </title>
       {/* Card */}
       <div className="bg-black/30 backdrop-blur-2xl border rounded-xl border-white/20 shadow-2xl p-10 w-full max-w-md">
 

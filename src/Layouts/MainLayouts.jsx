@@ -15,7 +15,7 @@ export default function MainLayouts() {
   }, [location]);
   return (
     <div >
-      <div className="inter-font">
+      <div className="inter-font mt-0">
         <Navbar></Navbar>
       </div>
       {/* main contain */}

@@ -1,14 +1,3 @@
-body {
-    font-family:
-        Helvetica Neue,
-        Helvetica,
-        Arial,
-        sans-serif;
-    font-size: 14px;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-}
 
 .swiper {
     width: 100%;
@@ -25,18 +14,18 @@ body {
     text-align: center;
     font-size: 18px;
     height: 620px;
-    /* Center slide text vertically */
     display: flex;
     justify-content: center;
     align-items: center;
+   
 }
 
-.swiper-slide img {
+/* .swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+} */
 
 
 .banner-1 {
@@ -60,40 +49,190 @@ body {
     .banner-1,
     .banner-2,
     .banner-3 {
-       flex-direction:column;
-       justify-content:center;
+        flex-direction: column;
+        justify-content: center;
 
-        background-position:top;
-        background-size:contain;
+        background-position: top;
+        background-size: contain;
+
+
+    }
+
+    .hero-title {
+        font-size: 30px;
+    }
+
+    .swiper-slide {
+        height: 960px
+    }
+
+    .swiper-pagination {
+        bottom: 160px !important;
+    }
+
+
+}
+
+
+@media screen and (min-width:912px) and (max-width:1368px) {
+     .banner-1,
+    .banner-2,
+    .banner-3 {
+       flex-direction:row;
+       justify-content:start;
+
+        background-position:right;
+        background-size:600px;
        
         
     }
-    .hero-title{
-        font-size:30px;
-    }
-  
-    .swiper-slide{
-        height:960px
-    }
-    .swiper-pagination {
-    bottom: 160px !important;
-    /* joto icha height diba */
-}
-
     
+} 
+
+
+@media screen and (min-width:744px) and (max-width:1133px) {
+
+    .banner-1,
+    .banner-2,
+    .banner-3 {
+        flex-direction: row;
+        justify-content: start;
+
+        background-position:left 320px bottom 150px;
+        background-size: contain;
+
+
+    }
+    .banner-content{
+        margin-top:70px;
+        text-align: start;
+        padding-left:20px;
+    }
+    .hero-title {
+        font-size:14px;
+        text-align: start;
+
+    }
+    .sub-title{
+        text-align:start;
+    }
+    .title{
+        padding:0
+    }
+    .btn-content{
+        align-items:start;
+    }
+
+    .swiper-slide {
+        height: 680px;
+        padding:0px !important;
+    }
+
+    .swiper-pagination {
+        bottom: 150px !important
+    }
+
 }
 
+@media screen and (min-width:820px) and (max-width:1180px) {
+
+    .banner-1,
+    .banner-2,
+    .banner-3 {
+        flex-direction: row;
+        justify-content: start;
+
+        background-position: 320px;
+        background-size: contain;
 
 
+    }
 
+    .hero-title {
+        font-size: 35px;
+        text-align: start;
+    }
+
+    .swiper-slide {
+        height: 600px
+    }
+
+    .swiper-pagination {
+        bottom: 80px !important
+    }
+
+}
+
+@media screen and (min-width:800px) and (max-width:1280px) {
+
+    .banner-1,
+    .banner-2,
+    .banner-3 {
+        flex-direction: row;
+        justify-content: start;
+
+        background-position: 320px;
+        background-size: contain;
+
+
+    }
+
+    .hero-title {
+        font-size: 35px;
+        text-align: start;
+    }
+
+    .swiper-slide {
+        height: 600px
+    }
+
+    .swiper-pagination {
+        bottom: 80px !important
+    }
+
+}
+@media screen and (min-width:1024px) and (max-width:1366px) {
+
+    .banner-1,
+    .banner-2,
+    .banner-3 {
+        flex-direction: row;
+        justify-content: start;
+
+        background-position: 470px;
+        background-size:700px;
+
+
+    }
+
+    .hero-title {
+        font-size: 35px;
+        text-align: start;
+    }
+
+    .swiper-slide {
+        height: 600px
+    }
+
+    .swiper-pagination {
+        bottom: 80px !important
+    }
+
+}
 
 @media screen and (min-width:1032px) and (max-width:1376px) {
-    .grid-layout {
-        grid-template-columns: repeat(3, 1fr);
+    .banner-1,
+    .banner-2,
+    .banner-3 {
+        flex-direction: row;
+        justify-content: start;
+
+        background-position:520px;
+        background-size:700px;
+
+
     }
 
-    .rent-card {
-        padding: 32px 15px
-    }
+    
 
 }

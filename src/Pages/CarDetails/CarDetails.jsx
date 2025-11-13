@@ -51,6 +51,9 @@ export default function CarDetails() {
 
   return (
     <div className="min-h-screen pt-32 px-4 sm:px-6 lg:px-10 pb-16 flex items-center justify-center">
+     <title>
+      {/* car-rental-platform-client || Car Details */}
+     </title>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}

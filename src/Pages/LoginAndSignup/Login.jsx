@@ -57,7 +57,9 @@ export default function Login() {
   }
   return (
     <div className="min-h-screen flex pt-32 pb-18 items-center justify-center px-4 ">
-
+     <title>
+      car-rental-platform-client || Login
+     </title>
       {/* Card */}
       <div className="bg-black/30 backdrop-blur-2xl border rounded-xl border-white/20 shadow-2xl p-10 w-full max-w-md">
 

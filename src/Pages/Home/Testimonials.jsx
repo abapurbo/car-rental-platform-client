@@ -1,5 +1,6 @@
 import React from "react";
 import { Quote, Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Testimonials() {
   const testimonials = [
@@ -29,32 +30,62 @@ export default function Testimonials() {
     },
   ];
 
+  // Animation Variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  };
+
+  const container = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
   return (
     <section className="py-20 bg-white">
-      <div className=" container mx-auto md:px-10 px-6 text-center">
-        <div className="text-center mb-16">
-        <h2 className="text-4xl  font-bold text-black mb-2">
-          What Our <span className="text-red-500">Customers Say</span>
-        </h2>
-        <p className="text-gray-500 md:max-w-lg mx-auto text-lg ">
-          Hear from our satisfied clients who experienced the comfort and quality of our car rental service.
-        </p>
-          {/* Decorative underline */}
+      <div className="container mx-auto md:px-10 px-6 text-center">
+        {/* Section Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp}
+        >
+          <h2 className="text-4xl font-bold text-black mb-2">
+            What Our <span className="text-red-500">Customers Say</span>
+          </h2>
+          <p className="text-gray-500 md:max-w-lg mx-auto text-lg">
+            Hear from our satisfied clients who experienced the comfort and quality of our car rental service.
+          </p>
           <div className="w-28 h-1 bg-red-600 mt-6 mx-auto rounded-full"></div>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 md:gap-10 ">
+        {/* Testimonials Grid */}
+        <motion.div
+          className="grid md:grid-cols-3 gap-10"
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {testimonials.map((t, i) => (
-            <div
+            <motion.div
               key={i}
-              className="relative bg-white shadow-lg rounded-2xl p-8 pt-12 border-t-4 border-red-500 hover:shadow-xl transition-all duration-300"
+              variants={fadeUp}
+              whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+              className="relative bg-white shadow-lg rounded-2xl p-8 pt-12 border-t-4 border-red-500 hover:shadow-2xl transition-all duration-300"
             >
-              {/* Quote icon */}
-              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-red-500 p-3 rounded-full text-white">
+              {/* Quote Icon */}
+              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-red-500 p-3 rounded-full text-white shadow-lg">
                 <Quote size={24} />
               </div>
 
-              {/* Stars */}
+              {/* Rating Stars */}
               <div className="flex justify-center mb-4">
                 {Array.from({ length: t.rating }).map((_, idx) => (
                   <Star
@@ -65,7 +96,7 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              {/* Review */}
+              {/* Review Text */}
               <p className="text-gray-600 italic mb-8">“{t.review}”</p>
 
               {/* User Info */}
@@ -78,9 +109,9 @@ export default function Testimonials() {
                 <h4 className="font-semibold text-gray-800">{t.name}</h4>
                 <p className="text-gray-500 text-sm">{t.role}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
